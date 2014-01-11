@@ -46,21 +46,21 @@ void affiche_boules(int c, int i, cases tableau[60]){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[26+i-1].x,tableau[26+i-1].y, 20, BLUE);
   }
-  if(c==1&&i<9&&i>0){
+  if(c==1&&i<10&&i>1){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
-	  drawCircle (tableau[35+i-1].x,tableau[35+i-1].y, 20, BLUE);
+	  drawCircle (tableau[35+i-1-1].x,tableau[35+i-1-1].y, 20, BLUE);
   }
-  if(c==2&&i<8&&i>0){
+  if(c==2&&i<10&&i>2){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
-	  drawCircle (tableau[43+i-1].x,tableau[43+i-1].y, 20, BLUE);
+	  drawCircle (tableau[43+i-1-2].x,tableau[43+i-1-2].y, 20, BLUE);
   }
-  if(c==3&&i<7&&i>0){
+  if(c==3&&i<10&&i>3){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
-	  drawCircle (tableau[50+i-1].x,tableau[50+i-1].y, 20, BLUE);
+	  drawCircle (tableau[50+i-1-3].x,tableau[50+i-1-3].y, 20, BLUE);
   }
-  if(c==4&&i<6&&i>0){
+  if(c==4&&i<10&&i>4){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
-	  drawCircle (tableau[56+i-1].x,tableau[56+i-1].y, 20, BLUE);
+	  drawCircle (tableau[56+i-1-4].x,tableau[56+i-1-4].y, 20, BLUE);
   }
 
 };

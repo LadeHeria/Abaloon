@@ -24,11 +24,11 @@ int main()
 	//cette fonction sert uniquement a verfier que les cases sont rangées dans le bon ordre, bien placées, etc
 	for(int i=0; i<61;i++){
 	drawCircle (tableau[i].x,tableau[i].y, 20, RED);
-	milliSleep(100);
+	milliSleep(10);
 	}
-	milliSleep(1000);
+	milliSleep(100);
 	affiche_boules(-4,5, tableau);
-	affiche_boules(3,2, tableau);
+	affiche_boules(3,7, tableau);
 	
 	// cout<<W<<endl;
 	
