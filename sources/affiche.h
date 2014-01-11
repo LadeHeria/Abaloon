@@ -9,7 +9,7 @@ using namespace std ;
 
 void affiche_plateau() ;
 
-void affiche_boules();
+void affiche_boules(char c, int i, cases tableau[60]);
 
 //cette fonction génère un tableau de points comportant la position des sommets haut-gauche des boules)
 //Pour une image de largeur 2000*1736.

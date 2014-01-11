@@ -26,7 +26,8 @@ int main()
 	drawCircle (tableau[i].x,tableau[i].y, 20, RED);
 	milliSleep(100);
 	}
-
+	milliSleep(1000);
+	affiche_boules(A,5, tableau);
 	
 	// cout<<W<<endl;
 	
