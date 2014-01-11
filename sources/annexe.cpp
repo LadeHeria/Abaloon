@@ -24,6 +24,13 @@ void inject2 (int W,int taille1,byte*t,byte*t1) {
   };
 }
 
+cases souris(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debut_y){
+	int button;
+	int x, y;
+	int cx,cy;
+	button=anyGetMouse(x,y,W1,sw);
+	cx=x/
+}
 
 
 

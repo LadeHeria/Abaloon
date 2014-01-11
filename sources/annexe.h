@@ -23,6 +23,9 @@ struct cases {
 };
 
 
+cases souris(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debut_y);
+
+
 
 
 
