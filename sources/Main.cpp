@@ -27,8 +27,8 @@ int main()
 	click();
 	affiche_plateau() ;
 	//putColorImage(0,0,r,g,b,W,H) ;
-	
-	
+	cases tableau[60];
+	generer_places(tableau,48,42,128,30);
 
 	
 	cout<<"done"<<endl;
