@@ -26,39 +26,39 @@ void affiche_boules(char c, int i, cases tableau[60]){
   byte*r ;
   byte*g ;
   byte*b ;
-  if(c=='A'||i<6||i>0){
+  if(c=='A'&&i<6&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[i-1].x,tableau[i-1].y, 20, BLUE);
   }
-  if(c=='B'||i<7||i>0){
+  if(c=='B'&&i<7&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[5+i-1].x,tableau[5+i-1].y, 20, BLUE);
   }
-  if(c=='C'||i<8||i>0){
+  if(c=='C'&&i<8&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[11+i-1].x,tableau[11+i-1].y, 20, BLUE);
   }
-  if(c=='D'||i<9||i>0){
+  if(c=='D'&&i<9&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[18+i-1].x,tableau[18+i-1].y, 20, BLUE);
   }
-  if(c=='E'||i<10||i>0){
+  if(c=='E'&&i<10&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[26+i-1].x,tableau[26+i-1].y, 20, BLUE);
   }
-  if(c=='F'||i<9||i>0){
+  if(c=='F'&&i<9&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[35+i-1].x,tableau[35+i-1].y, 20, BLUE);
   }
-  if(c=='G'||i<8||i>0){
+  if(c=='G'&&i<8&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[43+i-1].x,tableau[43+i-1].y, 20, BLUE);
   }
-  if(c=='H'||i<7||i>0){
+  if(c=='H'&&i<7&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[50+i-1].x,tableau[50+i-1].y, 20, BLUE);
   }
-  if(c=='I'||i<6||i>0){
+  if(c=='I'&&i<6&&i>0){
   //afficher ici l'image à la bonne place, pour le moment on trace un cercle
 	  drawCircle (tableau[56+i-1].x,tableau[56+i-1].y, 20, BLUE);
   }
