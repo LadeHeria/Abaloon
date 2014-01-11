@@ -5,9 +5,9 @@
 using namespace Imagine;
 using namespace std ;
 
-
+//Abalone
 //LISSER Marwan
-//DONAT-BOUILLUD Benoît
+//DONAT-BOUILLUD Benoit
 
 
 int main()
