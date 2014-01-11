@@ -1,6 +1,6 @@
 
 #include <iostream>
-//#include "annexe.h"
+#include "annexe.h"
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 using namespace std ;
@@ -24,12 +24,18 @@ void inject2 (int W,int taille1,byte*t,byte*t1) {
   };
 }
 
-cases souris(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debut_y){
+cases souris(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debuty){
 	int button;
 	int x, y;
-	int cx,cy;
-	button=anyGetMouse(x,y,W1,sw);
-	cx=x/
+	cases C;
+	button=getMouse(x,y);
+	C.y=4-(y-debuty)/decalage_y;
+	cout<<C.y<<endl;
+	if(C.y==4){
+	C.x=5+(x-debutx)/decalage_x;
+	cout<<C.x<<endl;
+	}
+	return(C);
 }
 
 

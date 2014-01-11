@@ -29,6 +29,12 @@ int main()
 	milliSleep(100);
 	affiche_boules(-4,5, tableau);
 	affiche_boules(3,7, tableau);
+	cases C;
+	C=souris(tableau,48,42,128,30);
+	cout<<C.x;
+	cout<<C.y;
+	affiche_boules(C.x,C.y,tableau);
+	milliSleep(2000);
 	
 	// cout<<W<<endl;
 	

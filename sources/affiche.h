@@ -21,4 +21,4 @@ void affiche_boules(int c, int i, cases tableau[60]);
 
 //a priori, il n'est pas nécessaire de faire un pointeur pour un tableau de 61 cases
 
-void generer_places(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debut_y);
+void generer_places(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debuty);
