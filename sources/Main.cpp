@@ -20,6 +20,14 @@ int main()
 	
   
 	openWindow(500,500);
+	cases tableau[60];
+	generer_places(tableau,48,42,128,30);
+	//cette fonction sert uniquement a verfier que les cases sont rangées dans le bon ordre, bien placées, etc
+	for(int i=0; i<61;i++){
+	drawCircle (tableau[i].x,tableau[i].y, 20, RED);
+	milliSleep(100);
+	}
+
 	
 	// cout<<W<<endl;
 	
@@ -27,8 +35,6 @@ int main()
 	click();
 	affiche_plateau() ;
 	//putColorImage(0,0,r,g,b,W,H) ;
-	cases tableau[60];
-	generer_places(tableau,48,42,128,30);
 
 	
 	cout<<"done"<<endl;
