@@ -27,7 +27,8 @@ int main()
 	milliSleep(100);
 	}
 	milliSleep(1000);
-	affiche_boules(A,5, tableau);
+	affiche_boules(-4,5, tableau);
+	affiche_boules(3,2, tableau);
 	
 	// cout<<W<<endl;
 	
