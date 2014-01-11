@@ -8,7 +8,6 @@ using namespace std ;
 //Abalone
 //LISSER Marwan
 //DONAT-BOUILLUD Benoit
-//commit + test
 
 
 int main()

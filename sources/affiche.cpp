@@ -30,38 +30,38 @@ void affiche_boules(char c, int i){
 void generer_places(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debuty){
 	//on place le premier pion de chaque ligne puis on place les pions dessus
 	//ligne 1
-	tableau[60].x=debutx;
+	tableau[60].x=debutx+4*decalage_x;
 	tableau[60].y=debuty;
 	for(int i=1; i<5; i++){
-		tableau[60-i].x=debutx+i*decalage_x;
+		tableau[60-i].x=tableau[60].x-i*decalage_x;
 		tableau[60-i].y=tableau[60].y;
 	}
 	//ligne 2
-	tableau[55].x=debutx-decalage_x/2;
+	tableau[55].x=debutx-decalage_x/2+5*decalage_x;
 	tableau[55].y=debuty+decalage_y;
 	for(int i=1; i<6; i++){
-		tableau[55-i].x=tableau[55].x+i*decalage_x;
+		tableau[55-i].x=tableau[55].x-i*decalage_x;
 		tableau[55-i].y=tableau[55].y;
 	}
 	//ligne 3
-	tableau[49].x=debutx-decalage_x;
+	tableau[49].x=debutx+5*decalage_x;
 	tableau[49].y=debuty+2*decalage_y;
 	for(int i=1; i<7; i++){
-		tableau[49-i].x=tableau[49].x+i*decalage_x;
+		tableau[49-i].x=tableau[49].x-i*decalage_x;
 		tableau[49-i].y=tableau[49].y;
 	}
 	//ligne 4
-	tableau[42].x=debutx-decalage_x-decalage_x/2;
+	tableau[42].x=debutx-decalage_x-decalage_x/2+7*decalage_x;
 	tableau[42].y=debuty+3*decalage_y;
 	for(int i=1; i<8; i++){
-		tableau[42-i].x=tableau[42].x+i*decalage_x;
+		tableau[42-i].x=tableau[42].x-i*decalage_x;
 		tableau[42-i].y=tableau[42].y;
 	}
 	//ligne 5
-	tableau[34].x=debutx-2*decalage_x;
+	tableau[34].x=debutx+6*decalage_x;
 	tableau[34].y=debuty+4*decalage_y;
 	for(int i=1; i<9; i++){
-		tableau[34-i].x=tableau[34].x+i*decalage_x;
+		tableau[34-i].x=tableau[34].x-i*decalage_x;
 		tableau[34-i].y=tableau[34].y;
 	}
 	//on symetrise les ligne par rapport à la premiere
