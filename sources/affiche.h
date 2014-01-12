@@ -11,6 +11,12 @@ void affiche_plateau() ;
 
 void affiche_boules(int c, int i, cases tableau[60]);
 
+void affiche_boules2(int c, int i, cases t[60]);
+
+void affiche_boule3(cases s, cases tpix[61], cases tco[61]);
+
+void affiche_t(cases s[61]);
+
 //cette fonction génère un tableau de points comportant la position des sommets haut-gauche des boules)
 //Pour une image de largeur 2000*1736.
 //Premier carré : 513 ;120 
@@ -21,4 +27,4 @@ void affiche_boules(int c, int i, cases tableau[60]);
 
 //a priori, il n'est pas nécessaire de faire un pointeur pour un tableau de 61 cases
 
-void generer_places(cases tableau[60], int decalage_x, int decalage_y, int debutx, int debuty);
+
