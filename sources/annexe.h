@@ -21,6 +21,15 @@ int pos(int a);
 struct cases {
   int x ;
   int y ;
+  cases operator +(cases s) {
+	  cases c ; c.x = x+s.x ; c.y = y+s.y;
+  }
+  cases operator -(cases s) {
+	  cases c ; c.x = x+s.x ; c.y = y+s.y;
+  }
+  cases operator*(int i){
+	  x=i*x ; y=y*i;
+  }
   bool operator==(cases s){
     return (x==s.x)&&(s.y==y);
   }

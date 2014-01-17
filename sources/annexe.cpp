@@ -131,8 +131,11 @@ cases souris(cases tpix[61], cases tco[61]){
 	int button;
 	cases s ; int sw; Window W1 ;
 	cases c ;
-	int d = dis(tpix[0],s); //std::numeric_limits<int>::max() ;
+	c.x=0;
+	c.y=0;
 	button=anyGetMouse(s.x,s.y,W1,sw);
+	int d =std::numeric_limits<int>::max() ;// dis(tpix[0],s); 
+
 	
 	cout<<s.x<<" "<<s.y<<endl ;
 	

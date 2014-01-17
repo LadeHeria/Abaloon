@@ -37,7 +37,7 @@ int main()
 	
 	affiche_boules2(H,7, tpix);
 	
-	affiche_boule3({E,2}, tpix,tco); 
+	//affiche_boule3({E,2}, tpix,tco); 
 	
 	cases c;
 	while (true) {// pour tester souris. Clique sur un cercle, il le met en bleu.

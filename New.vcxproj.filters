@@ -10,12 +10,18 @@
     <ClCompile Include="sources\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="plateau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\annexe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sources\affiche.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="plateau.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

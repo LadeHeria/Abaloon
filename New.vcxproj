@@ -315,8 +315,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="plateau.h" />
     <ClInclude Include="sources\annexe.h" />
     <ClInclude Include="sources\affiche.h" />
+    <ClCompile Include="plateau.cpp" />
     <ClCompile Include="sources\annexe.cpp" />
     <ClCompile Include="sources\affiche.cpp" />
     <ClCompile Include="sources\Main.cpp" />
