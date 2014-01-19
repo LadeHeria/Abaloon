@@ -150,9 +150,6 @@ cases souris(cases tpix[61], cases tco[61]){
 }
 
 
-
-    
-    
   
   
   
