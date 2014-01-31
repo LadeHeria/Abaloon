@@ -13,6 +13,6 @@ class plateau {
 	int boules_n;
 public:
 	plateau();
-	int get(cases c);
+	int get(cases c,cases tco[61]);
 	void deplacement(cases c,cases d);
 };

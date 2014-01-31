@@ -14,7 +14,7 @@ plateau::plateau(){
 }
 
 int plateau::get(cases c, cases tco){
-	if(abs(c.x)+c.y<10){
+	if(abs(c.x)+c.y>10){
 		return(3);
 	}
 	else{
@@ -25,15 +25,3 @@ int plateau::get(cases c, cases tco){
 	}
 }
 
-void plateau::deplacement(cases c,cases d){
-	
-	int b ;
-	int n ;
-	for(int i = 0; (i<6) ; i++){
-		if(get(c+i*(d-c))==1) n++ ;
-		if(get(c+i*(d-c))==2) b++ ;
-		if(get(c+i*(d-c))==0) {} ;
-		if ((get(c+i*(d-c))==3){}
-		if //cas 2-1-1
-
-}
