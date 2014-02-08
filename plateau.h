@@ -2,6 +2,7 @@
 using namespace Imagine;
 using namespace std ;
 #include "annexe.h"
+#include "coup.h"
 
 
 //O case vide
@@ -14,5 +15,7 @@ class plateau {
 public:
 	plateau();
 	int get(cases c);
+	void set(cases c, int v);
 	void deplacement(cases c,cases d);
+	void plateau::executeCoup(Coup coup);
 };

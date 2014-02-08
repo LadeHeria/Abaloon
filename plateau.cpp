@@ -18,22 +18,39 @@ int plateau::get(cases c, cases tco){
 		return(3);
 	}
 	else{
+		int j ;
 		for (int i=0; i<61&&(c!=tco[i]); i++) {
-			return(t[i]);
-
-		}
+			j=i;
+			}
+		return(t[j]);
 	}
+
 }
 
-void plateau::deplacement(cases c,cases d){
-	
-	int b ;
-	int n ;
-	for(int i = 0; (i<6) ; i++){
-		if(get(c+i*(d-c))==1) n++ ;
-		if(get(c+i*(d-c))==2) b++ ;
-		if(get(c+i*(d-c))==0) {} ;
-		if ((get(c+i*(d-c))==3){}
-		if //cas 2-1-1
+void plateau::set(cases c, int v) {
+	int j ;
+	for (int i=0; i<61&&(c!=tco[i]); i++) {
+			j=i;
+			}
+	t[j]=v ;
+}
 
+
+void plateau::deplacement(cases c,cases d, int &score_b, int &score_n){
+	if(abs(c+d).x+(c+d).y>=10){
+	if (get(c)==1) score_n++ ; if(get(c)==2) score_b++ ;
+	set(c,0) ;
+	}
+	else {set(c+d,get(c)) ; set(c,0);};
+}
+
+
+void plateau::executeCoup(Coup coup){
+	while((!coup.sumito.empty()){
+		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop ;
+	}
+	for(int i=0; i<executeCoup.size ; i++){
+		deplacement(coup.b_bouges[i],dmove,score_b,score_n) ;
+	}
+	
 }

@@ -13,7 +13,7 @@ plateau::plateau(){
 	t[60-12]=t[60-13]=t[60-14]=0;
 }
 
-int plateau::get(cases c, cases tco){
+int plateau::get(cases c, cases tco[61]){
 	if(abs(c.x)+c.y>10){
 		return(3);
 	}

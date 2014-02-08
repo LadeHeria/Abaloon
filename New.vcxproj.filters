@@ -10,7 +10,10 @@
     <ClCompile Include="sources\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="plateau.cpp">
+    <ClCompile Include="sources\plateau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\coup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -21,7 +24,10 @@
     <ClInclude Include="sources\affiche.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plateau.h">
+    <ClInclude Include="sources\plateau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\coup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
