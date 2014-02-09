@@ -1,4 +1,5 @@
 #pragma once
+#include <Imagine/Graphics.h>
 using namespace Imagine;
 using namespace std ;
 #include "annexe.h"
