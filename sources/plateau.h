@@ -13,10 +13,11 @@ class plateau {
 	int t[61];
 	int boules_b;
 	int boules_n;
+	cases tco[61];
 public:
 	plateau();
 	int get(cases c,cases tco[61]);
-	void set(cases c, int v);
-	void deplacement(cases c,cases d);
-	void plateau::executeCoup(Coup coup);
+	void set(cases c, int v, cases tco[61]);
+	void deplacement(cases c,cases d, int &score_b, int &score_n, cases tco[61]);
+	void executeCoup(Coup coup, int &score_b, int &score_n, cases tco[61]);
 };

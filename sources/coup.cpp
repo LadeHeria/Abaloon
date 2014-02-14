@@ -15,7 +15,7 @@ cases min(cases a, cases b){
 
   
 
-Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
+Coup::Coup(cases tpix[61],cases tco[61], const plateau &p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
   cases c = souris(tpix,tco); //première case
   b_bouges[0]=c; couleur = p.get(c,tco[61]); //je rentre la première boule, je prends la couleur du groupe à déplacer
   c = souris(tpix,tco);//case suivante cliquée
@@ -71,10 +71,9 @@ int Coup::estCorrect(plateau p){ //remplir le sumito
 }
 
  //idem en C
-{
+
     //dépiler le sumito + sortir ce qui doit sortir
     //dépiler i 
-}
 
 
 

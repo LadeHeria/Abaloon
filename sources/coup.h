@@ -1,19 +1,19 @@
-#include <stack>
+#pragma once
+using namespace std;
 #include "plateau.h"
-using namespace std ;
+#include<stack>
 
+class plateau;
 
-class Coup
-{
+class Coup {
+public :
    cases b_bouges[3] ; // coordonnées des billes à déplacer
    int size ;
    stack<cases> sumito ;
    cases dmove ; // direction du déplacement
    cases dboules ; //direction des boules
    int couleur ; //1 noir 2 blanc
-   
-public :
-  Coup(cases tpix[61],cases tco[61]) ;
+  Coup(cases tpix[61],cases tco[61], const plateau &p) ;
   bool estCorrect() ;
   
 };
