@@ -1,6 +1,7 @@
 #include "plateau.h"
 #include "coup.h"
 #include "annexe.h"
+#include "affiche.h"
 #include <stack>
 #include <cmath>
 using namespace std ;
@@ -17,9 +18,10 @@ cases min(cases a, cases b){
 
 Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
   cases c = souris(tpix,tco); //première case
-  b_bouges[0]=c; int couleur = p.get(c); //je rentre la première boule, je prends la couleur du groupe à déplacer
+  b_bouges[0]=c; int couleur = p.get(c);
+  affiche_boule3(b_bouges[0],tpix,tco,BLUE);//je rentre la première boule, je prends la couleur du groupe à déplacer
   c = souris(tpix,tco);//case suivante cliquée
-  for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {b_bouges[i+1]=c ;  c = souris(tpix,tco); size = i+1 ;}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
+  for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {b_bouges[i+1]=c ;  c = souris(tpix,tco); size = i+1 ; affiche_boule3(c,tpix,tco,BLUE);}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
   dboules = b_bouges[1]-b_bouges[0] ;//on donne la direction du groupe
   dmove = c-b_bouges[size-1];//la direction du déplacement
   while (p.get(c)==(couleur%2 +1)) {sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau

@@ -24,6 +24,8 @@ int main()
 	cases tpix[61] ;// ça c'est le tableau i->pixels 
 	cases tco[61] ; //ça c'est i-> coordonnées
 	
+	int score_b=0;
+	int score_n=0;
 	generer_pix(tpix,48,42,128,30);
 	
 	generer_co(tco);
@@ -42,9 +44,11 @@ int main()
 	affiche_t(p,tco,tpix);
 	
 	Coup C(tpix,tco,p);
-	for(int w=0; w<4; w++){
-	affiche_boule3(C.b_bouges[w],tpix,tco,BLUE);
+	if(C.estCorrect(p)==true){
+		p.executeCoup(C,score_b,score_n);
 	}
+	affiche_t(p,tco,tpix);
+
 	
 	
 	click();	
