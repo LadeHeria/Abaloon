@@ -41,7 +41,10 @@ int main()
 	
 	affiche_t(p,tco,tpix);
 	
-	
+	Coup C(tpix,tco,p);
+	for(int w=0; w<4; w++){
+	affiche_boule3(C.b_bouges[w],tpix,tco,BLUE);
+	}
 	
 	
 	click();	

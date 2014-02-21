@@ -16,7 +16,9 @@ int dis2(cases a, cases b) {
 }
 
 int pos(int a) {//partie positive
-  if (a<0) return 0 ; else a ;
+	if (a<0) {return 0 ;}
+	else{ 
+		return(a);} 
 }
 
 int min (int i, int j) {
