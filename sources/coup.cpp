@@ -30,6 +30,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 
 
 bool Coup::estCorrect(plateau p){ //remplir le sumito
+	cout<<"lancement de est correct";
 	int nb_couleur_c=0;
 	//je suis obligé de dépiler plusieurs fois dans la fonction pour tester les cases si on n'avance pas dans la direction du groupe,
 	//donc je pense qu'une pile n'est pas la bonne structure, j'ai considéré que c'était un tableau de 3 cases, il faudrait trouver une notation 
@@ -44,13 +45,16 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			for(int j=0;j<size+1;j++){
 				if(abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y>=10){return(1);}
 				if(p.get(b_bouges[size-1]+dmove*j)==0){
+					cout<<"est correct";
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*j)){ //si une boule on a la même couleur que le groupe, pas correct
+					cout<<"est pas correct";
 					return(0);
 				}
 				
 			}
+			cout<<"est pas correct";
 			return(0);
 		}
 		if(dboules==dmove*(-1)){
@@ -58,13 +62,16 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			//si on veut autoriser le suicide, c'est ici
 			for(int j=0;j<size+1;j++){
 				if(p.get(b_bouges[size-1]+dmove)==0){
+					cout<<"est correct";
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-j))){ //si une boule on a la même couleur que le groupe, pas correct
+					cout<<"est pas correct";
 					return(0);
 				}
 				
 			}
+			cout<<"est pas correct";
 			return(0);
 		}
 
@@ -75,9 +82,11 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 		//il faut aussi verifier qu'on ne sort pas du plateau
 		for(int k=0;k<size;k++){
 			if(p.get(b_bouges[k]+dmove)!=0){
+			cout<<"est pas correct";
 			return(0);
 			}
 			else{
+			cout<<"est correct";
 			return(1);
 			}
 		}
