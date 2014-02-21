@@ -24,7 +24,8 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
   for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {b_bouges[i+1]=c ;  c = souris(tpix,tco); size = i+1 ; affiche_boule3(c,tpix,tco,BLUE);}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
   dboules = b_bouges[1]-b_bouges[0] ;//on donne la direction du groupe
   dmove = c-b_bouges[size-1];//la direction du déplacement
-  while (p.get(c)==(couleur%2 +1)) {sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
+  while (p.get(c)==(couleur%2 +1)) {sumito.push(c) ; c = c+dmove ;
+  affiche_boule3(b_bouges[0],tpix,tco,BLUE);}//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
    
 }
 

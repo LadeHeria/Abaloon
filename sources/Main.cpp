@@ -47,6 +47,7 @@ int main()
 	if(C.estCorrect(p)==true){
 		p.executeCoup(C,score_b,score_n);
 	}
+	milliSleep(5000);
 	affiche_t(p,tco,tpix);
 
 	
