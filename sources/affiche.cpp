@@ -3,10 +3,17 @@
 #include <Imagine/Graphics.h>
 #include "affiche.h"
 #include <cmath>
+#include "plateau.h"
 using namespace Imagine;
 using namespace std ;
 
 
+
+Color couleur(int i){
+	if(i==0){return RED;} ;
+	if(i==1){return BLACK;}
+	if(i==2) {return GREEN;}
+}
 
 
 
@@ -73,28 +80,28 @@ void affiche_boules2(int c, int i, cases t[61]){ //version "automatisée" toujour
   byte*g ;
   byte*b ;
   
-  int j=0; int v=0 ;
+  int d=0; int v=0 ;
   for (int a = -4; a<5&&(v==0); a++){
     for(int k=1+pos(a); (k+abs(a)-pos(a)<10)&&(v==0);k++){
       //cout<<a<<" "<<k<<" "<<j<<endl;
       if ((a==c)&&(k==i)){
-	drawCircle(t[j].x,t[j].y,20,BLUE) ; v=1 ; 
+	drawCircle(t[d].x,t[d].y,20,BLUE) ; v=1 ; 
       } ;
-      j++ ;
+      d++ ;
     }
   }  
 }
 
-void affiche_boule3(cases s, cases tpix[61], cases tco[61]){ //censée ramener la case en pixels...
+void affiche_boule3(cases s, cases tpix[61], cases tco[61],Color co){ //censée ramener la case en pixels...
   cases c ; 
   c = cotopix(s, tpix, tco) ; 
-  drawCircle(c.x,c.y,20,BLUE) ;
+  drawCircle(c.x,c.y,20,co) ;
 }
   
  
-void affiche_t(cases s[61]){
+void affiche_t(plateau p,cases tco[61], cases tpix[61]){
   for(int i=0;i<61;i++){
-    cout<<s[i].x<<" "<<s[i].y<<endl ;
+    affiche_boule3(tco[i], tpix, tco, couleur(p.get(tco[i]))) ;
   }
 }
 

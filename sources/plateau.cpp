@@ -21,11 +21,13 @@ int plateau::get(cases c){
 		return(3);
 	}
   	else{
- 		int j ;
+		//c'est ici d'ici que venait l'erreur sur l'indice j
+		//je l'ai changé en f pour la trouver et j'ai rajouté "f=0", (au lieu de juste "int f" mais ça marche toujours pas
+ 		int f=0 ;
   		for (int i=0; i<61&&(c!=tco[i]); i++) {
- 			j=i;
+ 			f=i;
  			}
- 		return(t[j]);
+ 		return(t[f]);
  	}
  
  }

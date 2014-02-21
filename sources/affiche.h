@@ -1,6 +1,7 @@
 #include <iostream>
 #include "annexe.h"
 #include <Imagine/Graphics.h>
+#include "plateau.h"
 #pragma once
 using namespace Imagine;
 using namespace std ;
@@ -13,9 +14,10 @@ void affiche_boules(int c, int i, cases tableau[60]);
 
 void affiche_boules2(int c, int i, cases t[60]);
 
-void affiche_boule3(cases s, cases tpix[61], cases tco[61]);
+void affiche_boule3(cases s, cases tpix[61], cases tco[61], Color co);
 
-void affiche_t(cases s[61]);
+void affiche_t(plateau p,cases tco[61], cases tpix[61]);
+
 
 //cette fonction génère un tableau de points comportant la position des sommets haut-gauche des boules)
 //Pour une image de largeur 2000*1736.

@@ -39,10 +39,10 @@ void inject2 (int W,int taille1,byte*t,byte*t1) {
 }
 
 void generer_co(cases t[61]){ //même algorythme que pour affiche_balles2 - fonctionnel normalement donc
-  int j=0; 
+  int p=0; 
   for (int a = -4; a<5; a++){
     for(int k=1+pos(a); (k+abs(a)-pos(a)<10);k++){
-	t[j].x=a ; t[j].y=k ;  j++ ;
+	t[p].x=a ; t[p].y=k ;  p++ ;
      } ;
      
    }
@@ -109,20 +109,20 @@ void generer_pix(cases tableau[61], int decalage_x, int decalage_y, int debutx, 
 }
   
 cases pixtoco (cases s, cases tpix[61], cases tco[61]) { //je parcours bêtement le premier tableau jusqu'à trouver l'égalité, donc l'indice, puis j'utilise l'autre tableau
-  int j=0;
+  int e=0;
   for (int i=0; i<61&&(s!=tpix[i]); i++) {
-    j++ ;
+    e++ ;
   };
 
-  return tco[j] ;
+  return tco[e] ;
 }
   
 cases cotopix(cases s, cases tpix[61], cases tco[61]) {
-   int j=0;
+   int k=0;
   for (int i=0; i<61&&(s!=tco[i]); i++) {
-    j++;
+    k++;
   };
-  return tpix[j] ;
+  return tpix[k] ;
 }
     
 
