@@ -23,12 +23,16 @@ struct cases {
   int y ;
   cases operator +(cases s) {
 	  cases c ; c.x = x+s.x ; c.y = y+s.y;
+	  return(c);
   }
   cases operator -(cases s) {
 	  cases c ; c.x = x+s.x ; c.y = y+s.y;
+	  return(c);
   }
   cases operator*(int i){
-	  x=i*x ; y=y*i;
+	  cases c;
+	  c.x=i*x ; c.y=y*i;
+	  return(c);
   }
   bool operator==(cases s){
     return (x==s.x)&&(s.y==y);

@@ -16,8 +16,8 @@ class plateau {
 	cases tco[61];
 public:
 	plateau();
-	int get(cases c,cases tco[61]);
-	void set(cases c, int v, cases tco[61]);
-	void deplacement(cases c,cases d, int &score_b, int &score_n, cases tco[61]);
-	void executeCoup(Coup coup, int &score_b, int &score_n, cases tco[61]);
+	int get(cases c);
+	void set(cases c, int v);
+	void deplacement(cases c,cases d, int &score_b, int &score_n);
+	void executeCoup(Coup coup, int &score_b, int &score_n);
 };
