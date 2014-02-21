@@ -6,18 +6,22 @@ plateau::plateau(){
 	generer_co(tco);
 	boules_b=14;
 	boules_n=14;
+	for(int i=0; i<61;i++){
+	  t[i]=0 ; 
+	}
 	for(int i=0; i<11;i++){
 		t[i]=1;
 		t[60-i]=2;
 	}
-	t[12]=t[13]=t[14]=0;
-	t[60-12]=t[60-13]=t[60-14]=0;
+	t[13]=t[15]=t[14]=1;
+	
+	t[60-15]=t[60-13]=t[60-14]=2;
 }
 
 
 
 int plateau::get(cases c){
-	if(abs(c.x)+c.y>10){
+	if((abs(c.x)+c.y-pos(c.x)>10)||(abs(c.x)+c.y-pos(c.x)<0)){
 		return(3);
 	}
   	else{
@@ -25,7 +29,7 @@ int plateau::get(cases c){
 		//je l'ai changé en f pour la trouver et j'ai rajouté "f=0", (au lieu de juste "int f" mais ça marche toujours pas
  		int f=0 ;
   		for (int i=0; i<61&&(c!=tco[i]); i++) {
- 			f=i;
+ 			f=i+1; //erreur ici, c'est i+1...
  			}
  		return(t[f]);
  	}

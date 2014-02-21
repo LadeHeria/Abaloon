@@ -6,7 +6,7 @@ using namespace std ;
 #pragma once
 
 const int A = -4 ; // pour passer d'une ligne à une autre +/- 1
-const int B = -3 ; // test dans_plateau : |lettre|+chiffre <10
+const int B = -3 ; // !!!! test dans_plateau : 0<|lettre|+chiffre-pos(lettre) <10
 const int C = -2 ;
 const int D = -1 ;
 const int E = 0 ;
