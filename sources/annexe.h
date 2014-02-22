@@ -55,6 +55,7 @@ cases cotopix (cases s, cases tpix[61], cases tco[61]) ; // la réciproque
 
 cases souris(cases tpix[61], cases tco[61]); // la souris. on lui donne les pixels, elle rend la position grâce aux tableaux index
 
+int max (int i, int j);
 
 
 

@@ -24,6 +24,11 @@ int min (int i, int j) {
   else {return j;}
 }
 
+int max (int i, int j) {
+  if (i>j) {return i;} 
+  else {return j;}
+}
+
 void inject (int taille,int taille1,byte*t,byte*t1) {
   for (int i=0; i<(min(taille,taille1)*min(taille,taille1)); i++) {
     t1[i]=t[i];

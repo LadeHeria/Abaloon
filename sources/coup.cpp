@@ -31,7 +31,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 	//il faut vérifier que les boules selectionnées sont contigues
 	dboules.x=0;
 	dboules.y=0;
-	while(((abs(dboules.x)!=1)&&(abs(dboules.y)!=1))||((abs(dboules.x)+abs(dboules.y)!=1))){
+	while(max(abs(dboules.x),abs(dboules.y))!=1){
 		c = souris(tpix,tco);
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
 		cout<<"dboules"<<dboules.x<<" "<<dboules.y<<endl ;
