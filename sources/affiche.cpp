@@ -10,7 +10,7 @@ using namespace std ;
 
 
 Color couleur(int i){
-	if(i==0){return RED;} ;
+	if(i==0){return RED;} 
 	if(i==1){return BLACK;}
 	if(i==2) {return GREEN;}
 }

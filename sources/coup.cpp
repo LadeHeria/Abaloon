@@ -17,13 +17,29 @@ cases min(cases a, cases b){
   
 
 Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
-  cases c = souris(tpix,tco); affiche_boule3(c, tpix, tco,BLUE) ; cout<<c.x<<" "<<c.y<<endl; //première case
-  b_bouges[0]=c; int couleur = p.get(c); //je rentre la première boule, je prends la couleur du groupe à déplacer
-  c = souris(tpix,tco); affiche_boule3(c, tpix, tco,BLUE) ; cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
-  for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {b_bouges[i+1]=c ;  c = souris(tpix,tco);affiche_boule3(c, tpix, tco,BLUE) ; size = i+1 ; cout<<c.x<<" "<<c.y<<endl ;}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
+	int couleur=0;
+	cases c;
+	while(couleur==0){
+		c = souris(tpix,tco); 
+		cout<<c.x<<" "<<c.y<<endl; //première case
+		b_bouges[0]=c; 
+		couleur = p.get(c); //je rentre la première boule, je prends la couleur du groupe à déplacer
+	}
+	affiche_boule3(c, tpix, tco,BLUE) ;
+ c = souris(tpix,tco);
+  affiche_boule3(c, tpix, tco,BLUE) ;
+  cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
+  for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {
+	  b_bouges[i+1]=c ; 
+	  c = souris(tpix,tco);
+	  affiche_boule3(c, tpix, tco,BLUE) ; 
+	  size = i+1 ; 
+	  cout<<c.x<<" "<<c.y<<endl ;}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
   dboules = b_bouges[1]-b_bouges[0] ;//on donne la direction du groupe
-  dmove = c-b_bouges[size]; cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size].x<<","<<b_bouges[size].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
-  while (p.get(c)==(couleur%2 +1)) {sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
+  dmove = c-b_bouges[size]; 
+  cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size].x<<","<<b_bouges[size].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
+  while (p.get(c)==(couleur%2 +1)) {
+	  sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
    
 }
 
