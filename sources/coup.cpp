@@ -37,6 +37,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 		
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
 		cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
+		affiche_boule3(c, tpix, tco,BLUE) ;
 		c = souris(tpix,tco);
 	    }
 	}
