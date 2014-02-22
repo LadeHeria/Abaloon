@@ -41,6 +41,9 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
   for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {
 	  b_bouges[i+1]=c ; 
 	  c = souris(tpix,tco);
+	  while(dboules!=(c-b_bouges[i+1])){
+		c = souris(tpix,tco);
+	  }
 	  affiche_boule3(c, tpix, tco,BLUE) ; 
 	  size = size+1 ; 
 	  cout<<c.x<<" "<<c.y<<endl ;
