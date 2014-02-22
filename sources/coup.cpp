@@ -48,7 +48,6 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 	  size = size+1 ; 
 	  cout<<c.x<<" "<<c.y<<endl ;
   }//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
-  
   dmove = c-b_bouges[size-1]; 
   cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;
