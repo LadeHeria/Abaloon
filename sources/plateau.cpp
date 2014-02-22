@@ -39,7 +39,7 @@ int plateau::get(cases c){
  void plateau::set(cases c, int v) {
  	int j ;
  	for (int i=0; i<61&&(c!=tco[i]); i++) {
- 			j=i;
+ 			j=i+1;
  			}
  	t[j]=v ;
  }
@@ -47,20 +47,24 @@ int plateau::get(cases c){
 
  
  void plateau::deplacement(cases c,cases d, int &score_b, int &score_n){
- 	if(abs((c+d).x)+(c+d).y>=10){
- 	if (get(c)==1) score_n++ ; if(get(c)==2) score_b++ ;
- 	set(c,0) ;
- 	}
- 	else {set(c+d,get(c)) ; set(c,0);};
+ 	//if((abs((c+d).x)+(c+d).y-pos((c+d).x)>10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<0){
+	//  if (get(c)==1) score_n++ ; if(get(c)==2) score_b++ ;
+	//  set(c,0) ;
+ 	//}
+	if (0) {} 
+ 	else {set(c+d,get(c)) ; set(c,0); cout<<c.x<<" "<<c.y<<" to "<<(c+d).x<<" "<<(c+d).y<<endl;};
  }
  
  
  void plateau::executeCoup(Coup coup, int &score_b, int &score_n){
  	while((!coup.sumito.empty())){
- 		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop() ;
+ 		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop() ; cout<<"sumito"<<endl ;
  	}
- 	for(int i=0; i<coup.sumito.size() ; i++){
- 		deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
+ 	//for(int i=0; i<coup.sumito.size() ; i++){// partie sur le mouvement du sumito à refaire !!
+ 	//	deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
+ 	//}
+ 	for(int i=0; i<coup.size +1 ; i++){
+ 		deplacement(coup.b_bouges[coup.size-i],coup.dmove,score_b,score_n) ;
  	}
  	
  }

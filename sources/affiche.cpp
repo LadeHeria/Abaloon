@@ -101,7 +101,7 @@ void affiche_boule3(cases s, cases tpix[61], cases tco[61],Color co){ //censée r
  
 void affiche_t(plateau p,cases tco[61], cases tpix[61]){
   for(int i=0;i<61;i++){
-    affiche_boule3(tco[i], tpix, tco, couleur(p.get(tco[i]))) ; cout<<i+1<<" "<<(p.get(tco[i]))<<endl;
+    affiche_boule3(tco[i], tpix, tco, couleur(p.get(tco[i]))) ; //cout<<i+1<<" "<<(p.get(tco[i]))<<endl;
   }
 }
 

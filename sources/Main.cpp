@@ -24,8 +24,6 @@ int main()
 	cases tpix[61] ;// ça c'est le tableau i->pixels 
 	cases tco[61] ; //ça c'est i-> coordonnées
 	
-	int score_b=0;
-	int score_n=0;
 	generer_pix(tpix,48,42,128,30);
 	
 	generer_co(tco);
@@ -39,17 +37,23 @@ int main()
 	//}
 	//milliSleep(100);
 	
+	cout<<"salut"<<endl ;
+	int score_b ; int score_n ;
+	
 	plateau p ;
 	
 	affiche_t(p,tco,tpix);
 	
-	Coup C(tpix,tco,p);
-	if(C.estCorrect(p)==true){
-		p.executeCoup(C,score_b,score_n);
-	}
-	milliSleep(5000);
+	Coup coup = Coup(tpix,tco,p) ;
+	
+	cout<<"ici"<<endl ;
+	
+	p.executeCoup(coup, score_b, score_n);
+	
+	
 	affiche_t(p,tco,tpix);
-
+	
+	
 	
 	
 	click();	

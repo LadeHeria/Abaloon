@@ -26,7 +26,7 @@ struct cases {
 	  return(c);
   }
   cases operator -(cases s) {
-	  cases c ; c.x = x+s.x ; c.y = y+s.y;
+	  cases c ; c.x = x-s.x ; c.y = y-s.y;
 	  return(c);
   }
   cases operator*(int i){
