@@ -35,11 +35,12 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 	  b_bouges[i+1]=c ; 
 	  c = souris(tpix,tco);
 	  affiche_boule3(c, tpix, tco,BLUE) ; 
-	  size = i+1 ; 
-	  cout<<c.x<<" "<<c.y<<endl ;}//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
+	  size = size+1 ; 
+	  cout<<c.x<<" "<<c.y<<endl ;
+  }//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
   dboules = b_bouges[1]-b_bouges[0] ;//on donne la direction du groupe
-  dmove = c-b_bouges[size]; 
-  cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size].x<<","<<b_bouges[size].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
+  dmove = c-b_bouges[size-1]; 
+  cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;
   while (p.get(c)==(couleur%2 +1)) {
 	  sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
