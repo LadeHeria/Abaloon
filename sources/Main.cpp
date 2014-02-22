@@ -45,16 +45,15 @@ int main()
 	
 	while(true) {
 	
-	Coup coup = Coup(tpix,tco,p) ;
+		Coup coup = Coup(tpix,tco,p) ;
 	
-	cout<<"un coup de plus"<<endl ;
+		cout<<"un coup de plus"<<endl ;
 	
-	
-	
-	p.executeCoup(coup, score_b, score_n);
-	
-	affiche_t(p,tco,tpix);
-	
+		
+		if(coup.estCorrect(p)==1){
+			p.executeCoup(coup, score_b, score_n);
+		}
+		affiche_t(p,tco,tpix);
 	}
 	
 	
