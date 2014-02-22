@@ -27,8 +27,15 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 		//je rentre la première boule, je prends la couleur du groupe à déplacer
 		size=1;
 	}
-	affiche_boule3(c, tpix, tco,BLUE) ;
- c = souris(tpix,tco);
+	affiche_boule3(c, tpix, tco,BLUE) ; 
+	//il faut vérifier que les boules selectionnées sont contigues
+	dboules.x=0;
+	dboules.y=0;
+	while(((abs(dboules.x)!=1)&&(abs(dboules.y)!=1))||((abs(dboules.x)+abs(dboules.y)!=1))){
+		c = souris(tpix,tco);
+		dboules = c-b_bouges[0] ;//on donne la direction du groupe
+		cout<<"dboules"<<dboules.x<<" "<<dboules.y<<endl ;
+	}
   affiche_boule3(c, tpix, tco,BLUE) ;
   cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
   for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {
@@ -38,7 +45,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 	  size = size+1 ; 
 	  cout<<c.x<<" "<<c.y<<endl ;
   }//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
-  dboules = b_bouges[1]-b_bouges[0] ;//on donne la direction du groupe
+  
   dmove = c-b_bouges[size-1]; 
   cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;
