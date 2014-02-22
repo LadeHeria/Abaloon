@@ -37,18 +37,25 @@ int main()
 	//}
 	//milliSleep(100);
 	
-	cout<<"salut"<<endl ;
 	int score_b ; int score_n ;
 	
 	plateau p ;
 	
 	affiche_t(p,tco,tpix);
 	
+	while(true) {
+	
 	Coup coup = Coup(tpix,tco,p) ;
 	
-	cout<<"ici"<<endl ;
+	cout<<"un coup de plus"<<endl ;
+	
+	
 	
 	p.executeCoup(coup, score_b, score_n);
+	
+	affiche_t(p,tco,tpix);
+	
+	}
 	
 	
 	affiche_t(p,tco,tpix);
