@@ -50,9 +50,9 @@ int main()
 		cout<<"un coup de plus"<<endl ;
 	
 		
-		if(coup.estCorrect(p)==1){
+		//if(coup.estCorrect(p)==1){
 			p.executeCoup(coup, score_b, score_n);
-		}
+		//}
 		affiche_t(p,tco,tpix);
 	}
 	

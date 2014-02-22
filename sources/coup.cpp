@@ -38,15 +38,18 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
 		cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
 		affiche_boule3(c, tpix, tco,BLUE) ;
+		b_bouges[0]=c ; 
+		size=2;
+		
 		c = souris(tpix,tco);
 	    }
 	}
   affiche_boule3(c, tpix, tco,BLUE) ;
   cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
-  for (int i=0; (i<2)&&(p.get(c)==couleur); i++) {
-	  b_bouges[i+1]=c ; 
+  for (int i=0; (i<1)&&(p.get(c)==couleur); i++) {
+	  b_bouges[i+2]=c ; 
 	  c = souris(tpix,tco);
-	  while(dboules!=(c-b_bouges[i+1])&&(p.get(c)==couleur)){
+	  while(dboules!=(c-b_bouges[i+2])&&(p.get(c)==couleur)){
 		c = souris(tpix,tco);
 		cout<<"veuillez faire un groupe lineaire"<<endl;
 	  }
