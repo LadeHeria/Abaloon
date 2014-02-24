@@ -21,7 +21,7 @@ plateau::plateau(){
 
 
 int plateau::get(cases c){
-	if((abs(c.x)+c.y-pos(c.x)>10)||(abs(c.x)+c.y-pos(c.x)<0)){
+	if((abs((c).x)+(c).y-pos((c).x)>=10) || (abs((c).x)+(c).y-pos((c).x))<=0 || abs((c).x)>4 || (c).y<0){
 		return(3);
 	}
   	else{
@@ -48,7 +48,7 @@ int plateau::get(cases c){
  
  void plateau::deplacement(cases c,cases d, int &score_b, int &score_n){
 	 // !!!! test dans_plateau : 0<|lettre|+chiffre-pos(lettre) <10
- 	if((abs((c+d).x)+(c+d).y-pos((c+d).x)>=10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<=0 || abs((c+d).x)>5 || (c+d).y<0){
+ 	if((abs((c+d).x)+(c+d).y-pos((c+d).x)>=10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<=0 || abs((c+d).x)>4 || (c+d).y<0){
 		if (get(c)==1) {
 			score_n=score_n-1 ;
 		}

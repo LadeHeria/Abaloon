@@ -86,7 +86,6 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à part
 
 
 bool Coup::estCorrect(plateau p){ //remplir le sumito
-	int nb_couleur_c=0;
 	//je suis obligé de dépiler plusieurs fois dans la fonction pour tester les cases si on n'avance pas dans la direction du groupe,
 	//donc je pense qu'une pile n'est pas la bonne structure, j'ai considéré que c'était un tableau de 3 cases, il faudrait trouver une notation 
 	//pour lorsqu'on ne selectionne que deux elements (pour le troisieme) OU noter dans coup le nombre d'elements sous la forme int size <--MIEUX
@@ -114,6 +113,10 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
+				if(p.get(b_bouges[size-1]+dmove*j)==3){ //si une boule on a la même couleur que le groupe, pas correct
+					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
+					return(0);
+				}
 				
 			}
 			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
@@ -129,6 +132,10 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-j))){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
+					return(0);
+				}
+				if(p.get(b_bouges[size-1]+dmove*(-j))==3){ //si une boule on a la même couleur que le groupe, pas correct
+					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
 					return(0);
 				}
 				
@@ -154,11 +161,6 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 		}
 	}
 }
-
- //idem en C
-
-    //dépiler le sumito + sortir ce qui doit sortir
-    //dépiler i 
 
 
 
