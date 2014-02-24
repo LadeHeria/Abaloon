@@ -26,7 +26,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	cases c;
 	
 	while(couleur!=joueur){//ici on attend que l'utilisateur sélectionne une boule: les cases vides, on prend pas
-		cout<<"clique une case occupée margoulin"<<endl ;
+		cout<<"clique une case occupee margoulin"<<endl ;
 		c = souris(tpix,tco);
 		cout<<c.x<<" "<<c.y<<endl; //première case
 		b_bouges[0]=c; // got in
@@ -115,7 +115,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 				}
 				if(p.get(b_bouges[size-1]+dmove*j)==3){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
-					return(0);
+					return(1);
 				}
 				
 			}
@@ -136,7 +136,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 				}
 				if(p.get(b_bouges[size-1]+dmove*(-j))==3){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
-					return(0);
+					return(1);
 				}
 				
 			}
