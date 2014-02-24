@@ -12,52 +12,70 @@ cases min(cases a, cases b){
 }
 
 
-
+// Il faudra penser à modifier un peu coup à la fin pour que si l'utilisateur fait un coup impossible,
+// plutot que de devoir resélectionner juste sa dernière boule ou dernière direction (comme c'est le cas maintenant),
+// il doive refaire tout son coup. En effet dans le cas présent, si l'utilisateur se trompe, il sera coincé dans une boucle
+//  (par exemple impossible de déplacer une seule boule si par erreur t'as cliqué sur une autre boule trop lointaine)
 
   
 
 Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
+	
 	int couleur=0;
+	
 	cases c;
-	while(couleur==0){
-		c = souris(tpix,tco); 
+	
+	while(couleur==0){//ici on attend que l'utilisateur sélectionne une boule: les cases vides, on prend pas
+		cout<<"clique une case occupée margoulin"<<endl ;
+		c = souris(tpix,tco);
 		cout<<c.x<<" "<<c.y<<endl; //première case
-		b_bouges[0]=c; 
-		couleur = p.get(c);
+		b_bouges[0]=c; // got in
+		couleur = p.get(c); //maj de la couleur
 		//je rentre la première boule, je prends la couleur du groupe à déplacer
-		size=1;
+		size=1; 
 	}
-	affiche_boule3(c, tpix, tco,BLUE) ; 
+	affiche_boule3(c, tpix, tco,BLUE) ; //affiche en bleue la boule finalement sélectionnée
 	//il faut vérifier que les boules selectionnées sont contigues
+	
 	dboules.x=0;
 	dboules.y=0;
-	c = souris(tpix,tco);
-	if (p.get(c)==couleur){
-	    while(max(abs(dboules.x),abs(dboules.y))!=1){
-		
+	
+	c = souris(tpix,tco); //la boule suivante, ou peut-être la case vide vers laquelle la boule seule se dirige
+	
+	if (p.get(c)==couleur){ //si cette boule est de la même couleur... 
+	  
+	    while(max(abs(dboules.x),abs(dboules.y))!=1){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
+		cout<<"un clique adjacent stp"<<endl ;
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
 		cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
-		affiche_boule3(c, tpix, tco,BLUE) ;
-		b_bouges[0]=c ; 
+		affiche_boule3(c, tpix, tco,BLUE) ; //colore la nouvelle boule sélectionnée
+		b_bouges[1]=c ; 
 		size=2;
 		
-		c = souris(tpix,tco);
+		c = souris(tpix,tco); //nouvel essai s'il le faut ; autrement ce sera la case-vide-destination ou la boule suivante
 	    }
 	}
-  affiche_boule3(c, tpix, tco,BLUE) ;
+	
+	if (p.get(c)==couleur){ //si cette boule est aussi de la même couleur... 
+	    while(dboules != (c-b_bouges[1])){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
+		cout<<"WUT ?"<<endl ;
+		c = souris(tpix,tco);//nouvel essai
+		b_bouges[1]=c ; 
+		size=2;
+		
+		 
+	    }
+	    b_bouges[2]=c ; 
+	      affiche_boule3(c, tpix, tco,BLUE) ;
+		size=3;
+	c = souris(tpix,tco);//case destination
+	}
+	
+	
+
   cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
-  for (int i=0; (i<1)&&(p.get(c)==couleur); i++) {
-	  b_bouges[i+2]=c ; 
-	  c = souris(tpix,tco);
-	  while(dboules!=(c-b_bouges[i+2])&&(p.get(c)==couleur)){
-		c = souris(tpix,tco);
-		cout<<"veuillez faire un groupe lineaire"<<endl;
-	  }
-	  affiche_boule3(c, tpix, tco,BLUE) ; 
-	  size = size+1 ; 
-	  cout<<c.x<<" "<<c.y<<endl ;
-  }//tant qu'on clique de la même couleur je rentre dans le tableau (jusqu'à deux)
-  //c = souris(tpix,tco);
+  
+	
   dmove = c-b_bouges[size-1]; 
   cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;

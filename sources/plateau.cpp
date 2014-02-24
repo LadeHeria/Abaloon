@@ -63,8 +63,8 @@ int plateau::get(cases c){
  	//for(int i=0; i<coup.sumito.size() ; i++){// partie sur le mouvement du sumito à refaire !!
  	//	deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
  	//}
- 	for(int i=0; i<coup.size +1 ; i++){
- 		deplacement(coup.b_bouges[coup.size-i],coup.dmove,score_b,score_n) ;
+ 	for(int i=0; i<coup.size ; i++){
+ 		deplacement(coup.b_bouges[coup.size-i-1],coup.dmove,score_b,score_n) ;
  	}
  	
  }
