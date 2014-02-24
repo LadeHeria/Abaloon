@@ -13,7 +13,7 @@ public :
    cases dmove ; // direction du déplacement
    cases dboules ; //direction des boules
    int couleur ; //1 noir 2 blanc
-  Coup(cases tpix[61],cases tco[61], plateau p) ;
+  Coup(cases tpix[61],cases tco[61], plateau p, int joueur) ;
   bool estCorrect(plateau p) ;
   
 };

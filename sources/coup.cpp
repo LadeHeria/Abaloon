@@ -19,13 +19,13 @@ cases min(cases a, cases b){
 
   
 
-Coup::Coup(cases tpix[61],cases tco[61], plateau p) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
+Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : direction à partir de la dernière boule cliquée (sur une boule adjacente)
 	
 	int couleur=0;
 	
 	cases c;
 	
-	while(couleur==0){//ici on attend que l'utilisateur sélectionne une boule: les cases vides, on prend pas
+	while(couleur!=joueur){//ici on attend que l'utilisateur sélectionne une boule: les cases vides, on prend pas
 		cout<<"clique une case occupée margoulin"<<endl ;
 		c = souris(tpix,tco);
 		cout<<c.x<<" "<<c.y<<endl; //première case

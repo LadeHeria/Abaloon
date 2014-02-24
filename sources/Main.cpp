@@ -38,25 +38,31 @@ int main()
 	//milliSleep(100);
 	
 	int score_b=14 ; int score_n=14 ;
+	int joueur=1;
 	
 	plateau p ;
 	
 	affiche_t(p,tco,tpix);
-	
+	cout<<"Les noirs commencent"<<endl;
 	while(true||score_n!=8||score_b!=8) {
-	
-		Coup coup = Coup(tpix,tco,p) ;
-	
-		cout<<"un coup de plus"<<endl ;
-	
-		
-		if(coup.estCorrect(p)==1){
-			p.executeCoup(coup, score_b, score_n);
-		}
-		affiche_t(p,tco,tpix);
-		cout<<"score des noirs : "<<score_n<<endl;
-		cout<<"score des blancs : "<<score_b<<endl;
+			Coup coup = Coup(tpix,tco,p,joueur) ;
+			if(coup.estCorrect(p)==1){
+				p.executeCoup(coup, score_b, score_n);
+			}
+			affiche_t(p,tco,tpix);
+			cout<<"score des noirs : "<<score_n<<endl;
+			cout<<"score des blancs : "<<score_b<<endl;
+			if(joueur==1){
+				joueur=2;
+				cout<<"Aux blancs de jouer"<<endl;
+
+			}
+			else{
+			joueur=1;
+			cout<<"Aux noirs de jouer"<<endl;
+			}
 	}
+
 	
 	
 	affiche_t(p,tco,tpix);
