@@ -48,8 +48,7 @@ int main()
 			Coup coup = Coup(tpix,tco,p,joueur) ;
 			if(coup.estCorrect(p)==1){
 				p.executeCoup(coup, score_b, score_n);
-			}
-			affiche_t(p,tco,tpix);
+				affiche_t(p,tco,tpix);
 			cout<<"score des noirs : "<<score_n<<endl;
 			cout<<"score des blancs : "<<score_b<<endl;
 			if(joueur==1){
@@ -61,6 +60,8 @@ int main()
 			joueur=1;
 			cout<<"Aux noirs de jouer"<<endl;
 			}
+			}
+			
 	}
 
 	
