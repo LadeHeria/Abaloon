@@ -61,7 +61,9 @@ int main()
 			cout<<"Aux noirs de jouer"<<endl;
 			}
 			}
-			
+			else{
+			affiche_t(p,tco,tpix);
+			}
 	}
 
 	
