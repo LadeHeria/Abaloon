@@ -43,7 +43,7 @@ int main()
 	
 	affiche_t(p,tco,tpix);
 	
-	while(true) {
+	while(true||score_n!=8||score_b!=8) {
 	
 		Coup coup = Coup(tpix,tco,p) ;
 	
