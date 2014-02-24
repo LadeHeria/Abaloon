@@ -37,7 +37,7 @@ int main()
 	//}
 	//milliSleep(100);
 	
-	int score_b ; int score_n ;
+	int score_b=14 ; int score_n=14 ;
 	
 	plateau p ;
 	
@@ -50,10 +50,12 @@ int main()
 		cout<<"un coup de plus"<<endl ;
 	
 		
-		//if(coup.estCorrect(p)==1){
+		if(coup.estCorrect(p)==1){
 			p.executeCoup(coup, score_b, score_n);
-		//}
+		}
 		affiche_t(p,tco,tpix);
+		cout<<"score des noirs : "<<score_n<<endl;
+		cout<<"score des blancs : "<<score_b<<endl;
 	}
 	
 	

@@ -91,6 +91,10 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 	//donc je pense qu'une pile n'est pas la bonne structure, j'ai considéré que c'était un tableau de 3 cases, il faudrait trouver une notation 
 	//pour lorsqu'on ne selectionne que deux elements (pour le troisieme) OU noter dans coup le nombre d'elements sous la forme int size <--MIEUX
 //normalement on peut faire des égalités de cases, multiplication par un scalaire
+	if(max(abs(dmove.x),abs(dmove.y))!=1){
+		cout<<"est pas correct (dmove trop grand)"<<endl ;
+					return(0);
+	}
 	if((dboules==dmove)||(dboules==dmove*(-1))){
 		//on regarde ce qu'il y a dans cette direction 
 		//et on construit le sumito
@@ -99,7 +103,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			//si on veut autoriser le suicide, c'est ici
 			for(int j=0;j<size+1;j++){
 				if(abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y>=10){
-					cout<<"est correct";
+					cout<<"est correct"<<endl ;
 					return(1);
 				}
 				if(p.get(b_bouges[size-1]+dmove*j)==0){
@@ -107,12 +111,12 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*j)){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est pas correct";
+					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
 				
 			}
-			cout<<"est pas correct";
+			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
 		if(dboules==dmove*(-1)){
@@ -120,16 +124,16 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			//si on veut autoriser le suicide, c'est ici
 			for(int j=0;j<size+1;j++){
 				if(p.get(b_bouges[size-1]+dmove)==0){
-					cout<<"est correct";
+					cout<<"est correct"<<endl ;
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-j))){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est pas correct";
+					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
 				
 			}
-			cout<<"est pas correct";
+			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
 
@@ -140,11 +144,11 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 		//il faut aussi verifier qu'on ne sort pas du plateau
 		for(int k=0;k<size;k++){
 			if(p.get(b_bouges[k]+dmove)!=0){
-			cout<<"est pas correct";
+			cout<<"est pas correct (test truc muche)"<<endl ;
 			return(0);
 			}
 			else{
-			cout<<"est correct";
+			cout<<"est correct"<<endl ;
 			return(1);
 			}
 		}

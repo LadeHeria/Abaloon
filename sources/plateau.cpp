@@ -47,10 +47,16 @@ int plateau::get(cases c){
 
  
  void plateau::deplacement(cases c,cases d, int &score_b, int &score_n){
- 	//if((abs((c+d).x)+(c+d).y-pos((c+d).x)>10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<0){
-	//  if (get(c)==1) score_n++ ; if(get(c)==2) score_b++ ;
-	//  set(c,0) ;
- 	//}
+	 // !!!! test dans_plateau : 0<|lettre|+chiffre-pos(lettre) <10
+ 	if((abs((c+d).x)+(c+d).y-pos((c+d).x)>=10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<=0 || abs((c+d).x)>5 || (c+d).y<0){
+		if (get(c)==1) {
+			score_n=score_n-1 ;
+		}
+		if(get(c)==2) {
+			score_b=score_b-1 ;
+		}
+	  set(c,0) ;
+ 	}
 	if (0) {} 
  	else {set(c+d,get(c)) ; set(c,0); cout<<c.x<<" "<<c.y<<" to "<<(c+d).x<<" "<<(c+d).y<<endl;};
  }
