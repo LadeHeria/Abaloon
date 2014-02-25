@@ -100,8 +100,8 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 		if(dboules==dmove){
 					//si la casse est vide, on avance
 			//si on veut autoriser le suicide, c'est ici
-			for(int j=0;j<size+1;j++){
-				if((abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y-pos((b_bouges[size-1]+dmove*j).x)>=10) || (abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y-pos((b_bouges[size-1]+dmove*j).x))<=0 || abs((b_bouges[size-1]+dmove*j).x)>4 || (b_bouges[size-1]+dmove*j).y<0){
+			for(int j=1;j<size+1;j++){
+				if((p.get(b_bouges[size-1]+dmove*(j-1))==couleur)&&(abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y-pos((b_bouges[size-1]+dmove*j).x)>=10) || (abs((b_bouges[size-1]+dmove*j).x)+(b_bouges[size-1]+dmove*j).y-pos((b_bouges[size-1]+dmove*j).x))<=0 || abs((b_bouges[size-1]+dmove*j).x)>4 || (b_bouges[size-1]+dmove*j).y<0){
 					cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
@@ -113,11 +113,10 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				if(p.get(b_bouges[size-1]+dmove*j)==3){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
+				if(p.get(b_bouges[size-1]+dmove*j)==3){
+					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
 				}
-				
 			}
 			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
