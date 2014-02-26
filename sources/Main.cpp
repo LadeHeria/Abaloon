@@ -40,7 +40,7 @@ int main()
 	int score_b=14 ; int score_n=14 ;
 	int joueur=1;
 	plateau p ;
-	cases boules[14];
+	cases boules[15];
 	p.listeboules(joueur,boules);
 	affiche_t(p,tco,tpix);
 

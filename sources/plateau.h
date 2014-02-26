@@ -20,5 +20,5 @@ public:
 	void set(cases c, int v);
 	void deplacement(cases c,cases d, int &score_b, int &score_n);
 	void executeCoup(Coup coup, int &score_b, int &score_n);
-	void listeboules(int joueur, cases boules[14]);
+	void listeboules(int joueur, cases boules[15]);
 };

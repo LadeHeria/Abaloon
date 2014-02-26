@@ -163,8 +163,8 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 	}
 }
 
-Coup::Coup(cases listeboules[14], plateau p, int joueur){
-	int bouledepart=Random(0,13);
+Coup::Coup(cases listeboules[15], plateau p, int joueur){
+	int bouledepart=Random(0,listeboules[14].x-1);
 	couleur=joueur;
 
 	b_bouges[0]=listeboules[bouledepart];
