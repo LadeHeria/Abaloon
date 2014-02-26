@@ -62,3 +62,5 @@ int max (int i, int j);
 void InitRandom();
 
 int Random(int a, int b);
+
+int couleurop(int a);

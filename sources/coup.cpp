@@ -113,7 +113,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				if(p.get(b_bouges[size-1]+dmove*k)==3){
+				if(p.get(b_bouges[size-1]+dmove*k)==3&&p.get(b_bouges[size-1]+dmove*(k-1))==couleurop(couleur)){
 					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
 				}
@@ -125,20 +125,20 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					//si la casse est vide, on avance
 			//si on veut autoriser le suicide, c'est ici
 			for(int k=1;k<size+1;k++){
-				if((p.get(b_bouges[size-1]+dmove*(-(k-1)))==couleur)&&p.estdedans(b_bouges[size-1]+dmove*(-k))==0){
+				if((p.get(b_bouges[0]+dmove*((k-1)))==couleur)&&p.estdedans(b_bouges[0]+dmove*(k))==0){
 					cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
-				if(p.get(b_bouges[size-1]+dmove*(-k))==0){
-					cout<<"est correct 3255";
+				if(p.get(b_bouges[0]+dmove*(k))==0){
+					cout<<"est correct mauvais sens";
 					return(1); //si case vide, correct              
 				}
-				if(couleur==p.get(b_bouges[size-1]+dmove*(-k))){ //si une boule on a la même couleur que le groupe, pas correct
+				if(couleur==p.get(b_bouges[0]+dmove*(k))){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				if(p.get(b_bouges[size-1]+dmove*(-k))==3){
-					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
+				if(p.get(b_bouges[0]+dmove*(k))==3&&p.get(b_bouges[0]+dmove*(k-1))==couleurop(couleur)){
+					cout<<"est  correct (bien joue, vous poussez hors du plateau) mauvais sens"<<endl ;
 					return(1);
 				}
 			}
@@ -194,10 +194,26 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){
 		b_bouges[i]=b_bouges[0]+dboules*i;
 		i=i+1;
    }
-   cases c=b_bouges[size-1];
-   while (p.get(c)==(couleur%2 +1)) {
-	  sumito.push(c) ;
-	  c = c+dmove ; 
+
+   //construction du sumito
+   if(dboules==dmove){
+	   cases c=b_bouges[size-1]+dmove;
+		while (p.get(c)==couleurop(couleur)) {
+			sumito.push(c) ;
+			c = c+dmove;
+		}
+   }
+   else if(dboules==dmove*(-1)){
+	   cases c=b_bouges[0]+dmove;
+		while (p.get(c)==couleurop(couleur)) {
+			sumito.push(c) ;
+			c = c+dmove;
+		}
+   }
+   else{
+	   for(int i=0; i<size; i++){
+		sumito.push(b_bouges[i]+dmove);
+	   }
    }
    cout<<"Coup aleatoire bien genere"<<endl;
 }

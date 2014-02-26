@@ -169,6 +169,15 @@ int Random(int a, int b){
 	//double x = double(rand()/RAND_MAX);
 	return (a + rand()%(b-a));
 }
+
+int couleurop(int a){
+	if(a==1){
+		return(2);
+	}
+	else if(a==2){
+		return(1);
+	}
+}
   
   
   

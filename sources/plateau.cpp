@@ -69,12 +69,20 @@ int plateau::get(cases c){
  	while((!coup.sumito.empty())){
  		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop() ; cout<<"sumito"<<endl ;
  	}
- 	//for(int i=0; i<coup.sumito.size() ; i++){// partie sur le mouvement du sumito à refaire !!
- 	//	deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
- 	//}
- 	for(int i=0; i<coup.size ; i++){
- 		deplacement(coup.b_bouges[coup.size-i-1],coup.dmove,score_b,score_n) ;
+	if(coup.dboules==coup.dmove){
+	   for(int i=0; i<coup.size ; i++){
+ 			deplacement(coup.b_bouges[coup.size-i-1],coup.dmove,score_b,score_n) ;
+	   }
+   }
+   else if(coup.dboules==coup.dmove*(-1)){
+		for(int i=0; i<coup.size ; i++){
+ 			deplacement(coup.b_bouges[i-1],coup.dmove,score_b,score_n) ;
+   }
+ 	
  	}
+   for(int i=0; i<coup.size ; i++){
+ 			deplacement(coup.b_bouges[coup.size-i-1],coup.dmove,score_b,score_n) ;
+	   }
  	
  }
 
