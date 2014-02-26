@@ -40,10 +40,14 @@ int main()
 	int score_b=14 ; int score_n=14 ;
 	int joueur=1;
 	plateau p ;
+	
+	affiche_t(p,tco,tpix);
+	int a;
+	cout<<"tapez 1 pour l'IA, 2 pour le jeu a 2"<<endl;
+	cin>>a;
+	if(a==1){
 	cases boules[15];
 	p.listeboules(joueur,boules);
-	affiche_t(p,tco,tpix);
-
 	cout<<"Les noirs commencent"<<endl;
 	while(score_n!=8||score_b!=8) {
 			Coup coup = Coup(boules,p,joueur);
@@ -68,8 +72,9 @@ int main()
 			affiche_t(p,tco,tpix);
 			}
 	}
+	}
 
-	/*
+	else{
 
 	cout<<"Les noirs commencent"<<endl;
 	while(true||score_n!=8||score_b!=8) {
@@ -104,7 +109,7 @@ int main()
 	click();	
 	
 	cout<<"done"<<endl;
-		*/
+	}
 	endGraphics();
 	return 0;
 
