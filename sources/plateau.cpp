@@ -74,4 +74,15 @@ int plateau::get(cases c){
  	}
  	
  }
+
+ void plateau::listeboules(int joueur, cases boules[14]){
+	 int j=0;
+	 for(int i=0; i<61; i++){
+		 if(t[i]==joueur){
+			boules[j]=tco[i];
+			j=j+1;
+			
+		 }
+	 }
+ }
 		

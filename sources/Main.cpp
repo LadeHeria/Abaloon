@@ -36,13 +36,42 @@ int main()
 	//milliSleep(10);
 	//}
 	//milliSleep(100);
-	
+	InitRandom();
 	int score_b=14 ; int score_n=14 ;
 	int joueur=1;
-	
 	plateau p ;
-	
+	cases boules[14];
+	p.listeboules(joueur,boules);
 	affiche_t(p,tco,tpix);
+	cout<<Random(0,13)<<endl;
+
+	cout<<"Les noirs commencent"<<endl;
+	while(score_n!=8||score_b!=8) {
+			Coup coup = Coup(boules,p,joueur);
+			if(coup.estCorrect(p)==1){
+				p.executeCoup(coup, score_b, score_n);
+				affiche_t(p,tco,tpix);
+				cout<<"score des noirs : "<<score_n<<endl;
+				cout<<"score des blancs : "<<score_b<<endl;
+				if(joueur==1){
+					joueur=2;
+					p.listeboules(joueur,boules);
+					cout<<"Aux blancs de jouer"<<endl;
+
+							}
+				else{
+					joueur=1;
+					p.listeboules(joueur,boules);
+					cout<<"Aux noirs de jouer"<<endl;
+					}
+			}
+			else{
+			affiche_t(p,tco,tpix);
+			}
+	}
+
+	/*
+
 	cout<<"Les noirs commencent"<<endl;
 	while(true||score_n!=8||score_b!=8) {
 			Coup coup = Coup(tpix,tco,p,joueur) ;
@@ -76,7 +105,8 @@ int main()
 	click();	
 	
 	cout<<"done"<<endl;
-	
+		*/
 	endGraphics();
 	return 0;
+
 }

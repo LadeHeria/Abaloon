@@ -1,6 +1,8 @@
 //LISSER Marwan
 
 #include <Imagine/Graphics.h>
+#include <cstdlib>
+#include <ctime>
 using namespace Imagine;
 using namespace std ;
 #pragma once
@@ -57,6 +59,6 @@ cases souris(cases tpix[61], cases tco[61]); // la souris. on lui donne les pixe
 
 int max (int i, int j);
 
+void InitRandom();
 
-
-
+int Random(int a, int b);

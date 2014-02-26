@@ -121,28 +121,30 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
-		if(dboules==dmove*(-1)){
-						//si la casse est vide, on avance
+		if(dboules==dmove){
+					//si la casse est vide, on avance
 			//si on veut autoriser le suicide, c'est ici
-			for(int j=0;j<size+1;j++){
-				if(p.get(b_bouges[size-1]+dmove)==0){
-					cout<<"est pas correct"<<endl ;
+			for(int j=1;j<size+1;j++){
+				if((p.get(b_bouges[size-1]+dmove*(-(j-1)))==couleur)&&(abs((b_bouges[size-1]+dmove*(-j)).x)+(b_bouges[size-1]+dmove*(-j)).y-pos((b_bouges[size-1]+dmove*(-j)).x)>=10) || (abs((b_bouges[size-1]+dmove*(-j)).x)+(b_bouges[size-1]+dmove*(-j)).y-pos((b_bouges[size-1]+dmove*(-j)).x))<=0 || abs((b_bouges[size-1]+dmove*(-j)).x)>4 || (b_bouges[size-1]+dmove*(-j)).y<0){
+					cout<<"est pas correct (on se suicide pas)"<<endl ;
+					return(0);
+				}
+				if(p.get(b_bouges[size-1]+dmove*(-j))==0){
+					cout<<"est correct";
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-j))){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				if(p.get(b_bouges[size-1]+dmove*(-j))==3){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est  correct (bien joue, vous poussez hors du plateau)"<<endl ;
+				if(p.get(b_bouges[size-1]+dmove*(-j))==3){
+					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
 				}
-				
 			}
 			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
-
 	}
 
 
@@ -161,5 +163,32 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 	}
 }
 
+Coup::Coup(cases listeboules[14], plateau p, int joueur){
+	int bouledepart=Random(0,13);
+	couleur=joueur;
+
+	b_bouges[0]=listeboules[bouledepart];
+	size=Random(1,3);
+	dboules.x=0; dboules.y=0;
+	dmove.x=0, dmove.y=0;
+	while(dboules.x==0&&dboules.y==0){
+		dboules.x=Random(-1,1); dboules.y=Random(-1,1);
+	}
+	while(dmove.x==0&&dmove.y==0){
+		dmove.x=Random(-1,1); dmove.y=Random(-1,1);
+	}
+
+   int i=0;
+   while(p.get(b_bouges[0]+dboules*i)==joueur&&i<size){
+		b_bouges[i]=b_bouges[0]+dboules*i;
+		i=i+1;
+   }
+   cases c=b_bouges[size-1];
+   while (p.get(c)==(couleur%2 +1)) {
+	  sumito.push(c) ;
+	  c = c+dmove ; 
+   }
+   cout<<"Coup aleatoire bien genere"<<endl;
+}
 
 

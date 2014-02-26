@@ -161,6 +161,14 @@ cases souris(cases tpix[61], cases tco[61]){
 }
 
 
+void InitRandom(){
+srand((unsigned int)time(0));
+}
+
+int Random(int a, int b){
+	//double x = double(rand()/RAND_MAX);
+	return (a + rand()%(b-a));
+}
   
   
   
