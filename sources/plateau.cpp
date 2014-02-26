@@ -21,7 +21,7 @@ plateau::plateau(){
 
 
 int plateau::get(cases c){
-	if((abs((c).x)+(c).y-pos((c).x)>=10) || (abs((c).x)+(c).y-pos((c).x))<=0 || abs((c).x)>4 || (c).y<0){
+	if(estdedans(c)==0){
 		return(3);
 	}
   	else{

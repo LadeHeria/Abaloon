@@ -130,7 +130,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					return(0);
 				}
 				if(p.get(b_bouges[size-1]+dmove*(-k))==0){
-					cout<<"est correct";
+					cout<<"est correct 3255";
 					return(1); //si case vide, correct              
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-k))){ //si une boule on a la même couleur que le groupe, pas correct
@@ -150,15 +150,26 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 
 	else{
 		//il faut aussi verifier qu'on ne sort pas du plateau
+		int a=0;
 		for(int k=0;k<size;k++){
+			if(p.estdedans(b_bouges[k])==0){
+				cout<<"est pas correct, vous poussez en dehors (sur le travers)"<<endl;
+				a=a+1;
+			}
 			if(p.get(b_bouges[k]+dmove)!=0){
-			cout<<"est pas correct (test truc muche)"<<endl ;
-			return(0);
+			cout<<"est pas correct, poussee sur le travers"<<endl ;
+			a=a+1;
 			}
 			else{
-			cout<<"est correct"<<endl ;
-			return(1);
+				cout<<"est correct pousse sur le travers"<<endl;
+			a=a;
 			}
+		}
+		if(a==0){
+		return(1);
+		}
+		else{
+		return(0);
 		}
 	}
 }
