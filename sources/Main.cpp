@@ -40,7 +40,6 @@ int main()
 	int score_b=14 ; int score_n=14 ;
 	int joueur=1;
 	plateau p ;
-	
 	affiche_t(p,tco,tpix);
 	int a;
 	cout<<"tapez 1 pour l'IA, 2 pour le jeu a 2"<<endl;
