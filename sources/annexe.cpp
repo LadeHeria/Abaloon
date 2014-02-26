@@ -24,14 +24,14 @@ int pos(int a) {//partie positive
   }
 }
 
-int min (int i, int j) {
-  if (i<j) {return i;} 
-  else {return j;}
+int min (int i, int a) {
+  if (i<=a) {return i;} 
+  else {return a;}
 }
 
-int max (int i, int j) {
-  if (i>=j) {return i;} 
-  else {return j;}
+int max (int i, int a) {
+  if (i>=a) {return i;} 
+  else {return a;}
 }
 
 void inject (int taille,int taille1,byte*t,byte*t1) {
@@ -41,9 +41,9 @@ void inject (int taille,int taille1,byte*t,byte*t1) {
 }
 
 void inject2 (int W,int taille1,byte*t,byte*t1) {
-  for (int j=0; j<taille1;j++) {
+  for (int k=0; k<taille1;k++) {
     for (int i=0; i<taille1;i++) {
-      t1[i+W*j]=t1[i+W*j];
+      t1[i+W*k]=t1[i+W*k];
     };
   };
 }

@@ -43,7 +43,6 @@ int main()
 	cases boules[14];
 	p.listeboules(joueur,boules);
 	affiche_t(p,tco,tpix);
-	cout<<Random(0,13)<<endl;
 
 	cout<<"Les noirs commencent"<<endl;
 	while(score_n!=8||score_b!=8) {

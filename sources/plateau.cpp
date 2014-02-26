@@ -37,11 +37,15 @@ int plateau::get(cases c){
  }
  
  void plateau::set(cases c, int v) {
- 	int j ;
- 	for (int i=0; i<61&&(c!=tco[i]); i++) {
- 			j=i+1;
- 			}
- 	t[j]=v ;
+ 	int i=0 ;
+ 	//for (int i=0; i<61&&(c!=tco[i]); i++) {
+ 	//j=i+1;
+ 	//		}
+ 	//t[j]=v ;
+	while(c!=tco[i]&&i<61){
+		i=i+1;
+	}
+	t[i]=v;
  }
  
 
@@ -57,7 +61,6 @@ int plateau::get(cases c){
 		}
 	  set(c,0) ;
  	}
-	if (0) {} 
  	else {set(c+d,get(c)) ; set(c,0); cout<<c.x<<" "<<c.y<<" to "<<(c+d).x<<" "<<(c+d).y<<endl;};
  }
  
