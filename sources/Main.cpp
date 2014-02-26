@@ -49,7 +49,7 @@ int main()
 	cases boules[15];
 	p.listeboules(joueur,boules);
 	cout<<"Les noirs commencent"<<endl;
-	while(score_n!=8||score_b!=8) {
+	while(score_n!=8&&score_b!=8) {
 			Coup coup = Coup(boules,p,joueur);
 			if(coup.estCorrect(p)==1){
 				p.executeCoup(coup, score_b, score_n);

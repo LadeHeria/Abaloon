@@ -52,7 +52,7 @@ int plateau::get(cases c){
  
  void plateau::deplacement(cases c,cases d, int &score_b, int &score_n){
 	 // !!!! test dans_plateau : 0<|lettre|+chiffre-pos(lettre) <10
- 	if((abs((c+d).x)+(c+d).y-pos((c+d).x)>=10) || (abs((c+d).x)+(c+d).y-pos((c+d).x))<=0 || abs((c+d).x)>4 || (c+d).y<0){
+ 	if(estdedans(c+d)==0){
 		if (get(c)==1) {
 			score_n=score_n-1 ;
 		}
@@ -91,4 +91,39 @@ int plateau::get(cases c){
 	 c.y=j;
 	boules[14]=c;
  }
-		
+
+ bool plateau::estdedans(cases c){
+	 if(abs(c.x)>4){
+		return(0);
+	 }
+	 else if((c.x==-4)&&(c.y<1||c.y>5)){
+		return(0);
+	 }
+	 else if((c.x==-3)&&(c.y<1||c.y>6)){
+		return(0);
+	 }
+	 else if((c.x==-2)&&(c.y<1||c.y>7)){
+		return(0);
+	 }
+	 else if((c.x==-1)&&(c.y<1||c.y>8)){
+		return(0);
+	 }
+	 else if((c.x==0)&&(c.y<1||c.y>9)){
+		return(0);
+	 }
+	 else if((c.x==1)&&(c.y<2||c.y>9)){
+		return(0);
+	 }
+	 else if((c.x==2)&&(c.y<3||c.y>9)){
+		return(0);
+	 }
+	 else if((c.x==3)&&(c.y<4||c.y>9)){
+		return(0);
+	 }
+	 else if((c.x==4)&&(c.y<5||c.y>9)){
+		return(0);
+	 }
+	 else{
+	 return(1);
+	 }
+ }

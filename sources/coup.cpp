@@ -101,7 +101,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					//si la casse est vide, on avance
 			//si on veut autoriser le suicide, c'est ici
 			for(int k=1;k<size+1;k++){
-				if((p.get(b_bouges[size-1]+dmove*(k-1))==couleur)&&(abs((b_bouges[size-1]+dmove*k).x)+(b_bouges[size-1]+dmove*k).y-pos((b_bouges[size-1]+dmove*k).x)>=10) || (abs((b_bouges[size-1]+dmove*k).x)+(b_bouges[size-1]+dmove*k).y-pos((b_bouges[size-1]+dmove*k).x))<=0 || abs((b_bouges[size-1]+dmove*k).x)>4 || (b_bouges[size-1]+dmove*k).y<0){
+				if((p.get(b_bouges[size-1]+dmove*((k-1)))==couleur)&&p.estdedans(b_bouges[size-1]+dmove*(k))==0){
 					cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
@@ -121,17 +121,17 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
-		if(dboules==dmove){
+		if(dboules==dmove*(-1)){
 					//si la casse est vide, on avance
 			//si on veut autoriser le suicide, c'est ici
 			for(int k=1;k<size+1;k++){
-				if((p.get(b_bouges[size-1]+dmove*(-(k-1)))==couleur)&&(abs((b_bouges[size-1]+dmove*(-k)).x)+(b_bouges[size-1]+dmove*(-k)).y-pos((b_bouges[size-1]+dmove*(-k)).x)>=10) || (abs((b_bouges[size-1]+dmove*(-k)).x)+(b_bouges[size-1]+dmove*(-k)).y-pos((b_bouges[size-1]+dmove*(-k)).x))<=0 || abs((b_bouges[size-1]+dmove*(-k)).x)>4 || (b_bouges[size-1]+dmove*(-k)).y<0){
+				if((p.get(b_bouges[size-1]+dmove*(-(k-1)))==couleur)&&p.estdedans(b_bouges[size-1]+dmove*(-k))==0){
 					cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
 				if(p.get(b_bouges[size-1]+dmove*(-k))==0){
 					cout<<"est correct";
-					return(1); //si case vide, correct
+					return(1); //si case vide, correct              
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*(-k))){ //si une boule on a la même couleur que le groupe, pas correct
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
