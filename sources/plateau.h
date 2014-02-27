@@ -22,4 +22,5 @@ public:
 	void executeCoup(Coup coup, int &score_b, int &score_n);
 	void listeboules(int joueur, cases boules[15]);
 	bool estdedans(cases c);
+	int evalCoup(Coup coup);
 };

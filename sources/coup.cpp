@@ -79,7 +79,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
   dmove = c-b_bouges[size-1]; 
   cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;
-  while (p.get(c)==(couleur%2 +1)) {
+  while (p.get(c)==couleurop(couleur)) {
 	  sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
    
 }
@@ -220,4 +220,61 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){
    cout<<"Coup aleatoire bien genere"<<endl;
 }
 
+Coup(cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
+	couleur=ajoueur;
+	b_bouges[0]=bouledep;
+	dboules=adboules;
+	dmove=admove;
+	size=asize;
+	int i=0;
+   
+   while(p.get(b_bouges[0]+dboules*i)==joueur&&i<size){
+		b_bouges[i]=b_bouges[0]+dboules*i;
+		i=i+1;
+   }
+   size=i;
+   //construction du sumito
+   if(dboules==dmove){
+	   cases c=b_bouges[size-1]+dmove;
+		while (p.get(c)==couleurop(couleur)) {
+			sumito.push(c) ;
+			c = c+dmove;
+		}
+   }
+   else if(dboules==dmove*(-1)){
+	   cases c=b_bouges[0]+dmove;
+		while (p.get(c)==couleurop(couleur)) {
+			sumito.push(c) ;
+			c = c+dmove;
+		}
+   }
+}
+
+Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
+	int* tcoup=new int[listeboules[14].x*6*3*6];
+	cases direction[6];
+	direction[0].x=1; direction[0].y=0;
+	direction[1].x=1; direction[1].y=1;
+	direction[2].x=0; direction[2].y=1;
+	direction[3].x=-1; direction[3].y=0;
+	direction[4].x=-1; direction[4].y=-1;
+	direction[5].x=0; direction[5].y=-1;
+
+	for(int i=0; i<listeboules[14].x; i++){
+		for(int j=0; j<6; j++){
+			for(int k=0; k<3; k++){
+				for(int l=0; l<6;l++){
+					Coup coup=Coup(listeboules[i], direction[j], k, direction[l], joueur);
+					if(p.eval(coup)==1){
+						tcoup[i+listeboules[14].x*j+6*k+3*l]=tcoup[i+listeboules[14].x*j+6*k+3*l]+1
+					}
+					else{
+						tcoup[i+listeboules[14].x*j+6*k+3*l]=0;
+					}
+				}
+			}
+		}
+	}
+	delete[] tcoup;
+}
 

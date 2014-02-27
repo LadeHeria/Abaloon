@@ -137,3 +137,12 @@ int plateau::get(cases c){
 	 return(1);
 	 }
  }
+
+ int plateau::evalCoup(Coup coup){
+	 if(estdedans(coup.sumito.top()+coup.dmove)==0){
+		return(1);
+	 }
+	 else{
+	 return(0);
+	 }
+ }
