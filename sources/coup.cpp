@@ -106,7 +106,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					return(0);
 				}
 				if(p.get(b_bouges[size-1]+dmove*k)==0){
-					cout<<"est correct";
+					cout<<"est correct bon sens";
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*k)){ //si une boule on a la même couleur que le groupe, pas correct
@@ -152,17 +152,13 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 		//il faut aussi verifier qu'on ne sort pas du plateau
 		int a=0;
 		for(int k=0;k<size;k++){
-			if(p.estdedans(b_bouges[k])==0){
-				cout<<"est pas correct, vous poussez en dehors (sur le travers)"<<endl;
-				a=a+1;
-			}
-			if(p.get(b_bouges[k]+dmove)!=0){
-			cout<<"est pas correct, poussee sur le travers"<<endl ;
-			a=a+1;
+			if(p.estdedans(b_bouges[k]+dmove)==1&&p.get(b_bouges[k]+dmove)==0){
+				cout<<"est correct, vous poussez en dehors (sur le travers)"<<endl;
+				a=a;
 			}
 			else{
-				cout<<"est correct pousse sur le travers"<<endl;
-			a=a;
+				cout<<"est pas correct pousse sur le travers"<<endl;
+			a=a+1;
 			}
 		}
 		if(a==0){
@@ -177,16 +173,20 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 Coup::Coup(cases listeboules[15], plateau p, int joueur){
 	int bouledepart=Random(0,listeboules[14].x);
 	couleur=joueur;
+	cases direction[6];
+	direction[0].x=1; direction[0].y=0;
+	direction[1].x=1; direction[1].y=1;
+	direction[2].x=0; direction[2].y=1;
+	direction[3].x=-1; direction[3].y=0;
+	direction[4].x=-1; direction[4].y=-1;
+	direction[5].x=0; direction[5].y=-1;
 
 	b_bouges[0]=listeboules[bouledepart];
 	size=Random(1,4);
-	dboules.x=0; dboules.y=0;
-	dmove.x=0, dmove.y=0;
-	while(dboules.x==0&&dboules.y==0){
-		dboules.x=Random(-1,2); dboules.y=Random(-1,2);
-	}
-	while(dmove.x==0&&dmove.y==0){
-		dmove.x=Random(-1,2); dmove.y=Random(-1,2);
+	dboules=direction[Random(0,6)];
+	dmove=dboules*(-1);
+	while(dmove==dboules*(-1)){
+		dmove=direction[Random(0,6)];
 	}
 
    int i=0;
