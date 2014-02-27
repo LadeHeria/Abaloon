@@ -210,11 +210,11 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){
 			c = c+dmove;
 		}
    }
-   else{
-	   for(int i=0; i<size; i++){
-		sumito.push(b_bouges[i]+dmove);
-	   }
-   }
+  // else{
+	//   for(int i=0; i<size; i++){
+		//sumito.push(b_bouges[i]+dmove);
+	   //}
+   //}
    cout<<"Coup aleatoire bien genere"<<endl;
 }
 
