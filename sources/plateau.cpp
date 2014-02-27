@@ -80,11 +80,11 @@ int plateau::get(cases c){
 		}
  	
  	}
-   //else{
-   //for(int i=0; i<coup.size ; i++){
- 	//		deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
-	  // }
-   //}
+   else{
+   for(int i=0; i<coup.size ; i++){
+ 			deplacement(coup.b_bouges[i],coup.dmove,score_b,score_n) ;
+	   }
+   }
  	
  }
 

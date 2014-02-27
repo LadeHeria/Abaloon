@@ -190,10 +190,12 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){
 	}
 
    int i=0;
+   
    while(p.get(b_bouges[0]+dboules*i)==joueur&&i<size){
 		b_bouges[i]=b_bouges[0]+dboules*i;
 		i=i+1;
    }
+   size=i;
 
    //construction du sumito
    if(dboules==dmove){
