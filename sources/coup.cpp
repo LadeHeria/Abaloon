@@ -220,7 +220,7 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){
    cout<<"Coup aleatoire bien genere"<<endl;
 }
 
-Coup(cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
+Coup::Coup(plateau p, cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
 	couleur=ajoueur;
 	b_bouges[0]=bouledep;
 	dboules=adboules;
@@ -228,7 +228,7 @@ Coup(cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
 	size=asize;
 	int i=0;
    
-   while(p.get(b_bouges[0]+dboules*i)==joueur&&i<size){
+   while(p.get(b_bouges[0]+dboules*i)==ajoueur&&i<size){
 		b_bouges[i]=b_bouges[0]+dboules*i;
 		i=i+1;
    }
@@ -264,9 +264,9 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 		for(int j=0; j<6; j++){
 			for(int k=0; k<3; k++){
 				for(int l=0; l<6;l++){
-					Coup coup=Coup(listeboules[i], direction[j], k, direction[l], joueur);
-					if(p.eval(coup)==1){
-						tcoup[i+listeboules[14].x*j+6*k+3*l]=tcoup[i+listeboules[14].x*j+6*k+3*l]+1
+					Coup coup=Coup(p, listeboules[i], direction[j], k, direction[l], joueur);
+					if(p.evalCoup(coup)==1){
+						tcoup[i+listeboules[14].x*j+6*k+3*l]=tcoup[i+listeboules[14].x*j+6*k+3*l]+1;
 					}
 					else{
 						tcoup[i+listeboules[14].x*j+6*k+3*l]=0;
@@ -276,5 +276,7 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 		}
 	}
 	delete[] tcoup;
+	Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
+	return(coup);
 }
 

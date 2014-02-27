@@ -15,7 +15,7 @@ public :
    int couleur ; //1 noir 2 blanc
   Coup(cases tpix[61],cases tco[61], plateau p, int joueur) ;
   Coup(cases listeboules[15], plateau p, int joueur) ;
-  Coup(cases bouledep, cases adboules, int asize, cases admove, int ajoueur);
+  Coup(plateau p, cases bouledep, cases adboules, int asize, cases admove, int ajoueur);
   bool estCorrect(plateau p) ;
   
 };
