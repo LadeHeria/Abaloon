@@ -4,6 +4,8 @@
 #include "affiche.h"
 #include <stack>
 #include <cmath>
+#include <vector>
+#include <algorithm>
 using namespace std ;
 
 cases min(cases a, cases b){ 
@@ -250,8 +252,17 @@ Coup::Coup(plateau p, cases bouledep, cases adboules, int asize, cases admove, i
    }
 }
 
+Coup::Coup(){
+	size=0 ;
+	couleur=1;
+}
+IA::IA(){
+	valeur=0;
+
+}
+
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
-	int* tcoup=new int[listeboules[14].x*6*3*6];
+	vector <IA> tcoup;
 	cases direction[6];
 	direction[0].x=1; direction[0].y=0;
 	direction[1].x=1; direction[1].y=1;
@@ -259,24 +270,28 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 	direction[3].x=-1; direction[3].y=0;
 	direction[4].x=-1; direction[4].y=-1;
 	direction[5].x=0; direction[5].y=-1;
-
+	int d=0;
 	for(int i=0; i<listeboules[14].x; i++){
 		for(int j=0; j<6; j++){
 			for(int k=0; k<3; k++){
-				for(int l=0; l<6;l++){
+				for(int l=0; l<6&&l!=j+3%6;l++){
 					Coup coup=Coup(p, listeboules[i], direction[j], k, direction[l], joueur);
-					if(p.evalCoup(coup)==1){
-						tcoup[i+listeboules[14].x*j+6*k+3*l]=tcoup[i+listeboules[14].x*j+6*k+3*l]+1;
+					IA IA11;
+					if(coup.estCorrect(p)==1){
+						IA11.coup=coup;
+						if(p.evalCoup(coup)==1){
+							IA11.valeur=IA11.valeur+1;
+						}
+					tcoup.push_back(IA11);
 					}
-					else{
-						tcoup[i+listeboules[14].x*j+6*k+3*l]=0;
-					}
+					
 				}
 			}
 		}
 	}
-	delete[] tcoup;
-	Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
-	return(coup);
+	sort(tcoup.begin(), tcoup.end());
+	//delete[] tcoup;
+	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
+	return(tcoup.back().coup);
 }
 
