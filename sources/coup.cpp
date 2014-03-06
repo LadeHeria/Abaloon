@@ -49,15 +49,16 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	c = souris(tpix,tco); //la boule suivante, ou peut-être la case vide vers laquelle la boule seule se dirige
 	
 	if (p.get(c)==couleur){ //si cette boule est de la même couleur... 
-	  
+		  cases c2 = {-1,-1} ; //stocke une éventuelle boule mal cliquée
 	    while(max(abs(dboules.x),abs(dboules.y))!=1){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
+		if (c2.y!=(-1)) affiche_boule3(c2, tpix, tco,RED) ; //efface la mal cliquée
 		cout<<"un clique adjacent stp"<<endl ;
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
 		cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
 		affiche_boule3(c, tpix, tco,BLUE) ; //colore la nouvelle boule sélectionnée
 		b_bouges[1]=c ; 
 		size=2;
-		
+		c2 =c ;
 		c = souris(tpix,tco); //nouvel essai s'il le faut ; autrement ce sera la case-vide-destination ou la boule suivante
 	    }
 	}
@@ -66,7 +67,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	    while(dboules != (c-b_bouges[1])){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
 		cout<<"WUT ?"<<endl ;
 		c = souris(tpix,tco);//nouvel essai
-		b_bouges[1]=c ; 
+		b_bouges[2]=c ;  
 		size=2;
 		
 		 
