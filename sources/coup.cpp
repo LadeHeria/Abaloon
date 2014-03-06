@@ -8,6 +8,10 @@
 #include <algorithm>
 using namespace std ;
 
+bool operator<(IA IA1, IA IA2){
+    return (IA1.valeur<IA2.valeur);
+	 }
+
 cases min(cases a, cases b){ 
   if (abs(a.x)+abs(a.y)<abs(b.x)+abs(b.y)) return a ;
   else return b ;
@@ -172,7 +176,8 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 	}
 }
 
-Coup::Coup(cases listeboules[15], plateau p, int joueur){
+Coup::Coup(cases listeboules[15], plateau p, int joueur){ // constructeur de coup aléatoire
+  
 	int bouledepart=Random(0,listeboules[14].x);
 	couleur=joueur;
 	cases direction[6];
@@ -262,7 +267,7 @@ IA::IA(){
 }
 
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
-	vector <IA> tcoup;
+	vector <IA> tcoup; 
 	cases direction[6];
 	direction[0].x=1; direction[0].y=0;
 	direction[1].x=1; direction[1].y=1;
@@ -271,11 +276,11 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 	direction[4].x=-1; direction[4].y=-1;
 	direction[5].x=0; direction[5].y=-1;
 	int d=0;
-	for(int i=0; i<listeboules[14].x; i++){
-		for(int j=0; j<6; j++){
-			for(int k=0; k<3; k++){
-				for(int l=0; l<6&&l!=j+3%6;l++){
-					Coup coup=Coup(p, listeboules[i], direction[j], k, direction[l], joueur);
+	for(int i=0; i<listeboules[14].x; i++){//parcours de toutes les boules
+		for(int j=0; j<6; j++){// .... de toutes les directions du groupe à déplacer
+			for(int k=0; k<3; k++){//... de toutes les tailles de groupe
+				for(int l=0; l<6&&l!=j+3%6;l++){//toutes les directions de déplacement du groupe sauf colinéaire de sens opposé au vecteur groupe (pk ?)
+					Coup coup=Coup(p, listeboules[i], direction[j], k, direction[l], joueur); // construction du coup en question
 					IA IA11;
 					if(coup.estCorrect(p)==1){
 						IA11.coup=coup;

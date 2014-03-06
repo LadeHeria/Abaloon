@@ -20,14 +20,14 @@ public :
   bool estCorrect(plateau p) ;
   
 };
-struct IA {
+
+
+struct IA { //structure qui stock un coup et le nombre de points associés
 	int valeur;
 	Coup coup;
 	//plateau p;
 	IA();
-	bool operator<(IA IA1){
-    return (valeur<IA1.valeur);
-	 }
+	
 
 };
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur);

@@ -99,10 +99,10 @@ int plateau::get(cases c){
 	 }
 	 c.x=j;
 	 c.y=j;
-	boules[14]=c;
+	boules[14]=c; // info nombre de boules contenue dans la 15ème case (numérotée 14)
  }
 
- bool plateau::estdedans(cases c){
+ bool plateau::estdedans(cases c){ //aha t'as laissé tombé le test "joli" ; dommage, on perd en classe.
 	 if(abs(c.x)>4){
 		return(0);
 	 }
@@ -138,7 +138,7 @@ int plateau::get(cases c){
 	 }
  }
 
- int plateau::evalCoup(Coup coup){
+ int plateau::evalCoup(Coup coup){ //donne le nombre de "points" que rapporte le coup
 	 if(estdedans(coup.sumito.top()+coup.dmove)==0){
 		return(1);
 	 }

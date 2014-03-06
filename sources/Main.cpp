@@ -36,26 +36,31 @@ int main()
 	//milliSleep(10);
 	//}
 	//milliSleep(100);
+	
+	
 	InitRandom();
 	int score_b=14 ; int score_n=14 ;
-	int joueur=1;
+	int joueur=1; // le joueur qui doit jouer son prochain coup
 	plateau p ;
 	affiche_t(p,tco,tpix);
 	int a;
 	cout<<"tapez 1 pour l'IA, 2 pour le jeu a 2, 3 pour le jeu contre l'IA, 4 pour l'IA amelioree"<<endl;
 	cin>>a;
-	if(a==1){
-	cases boules[15];
-	p.listeboules(joueur,boules);
-	cout<<"Les noirs commencent"<<endl;
-	while(score_n!=8&&score_b!=8) {
-			Coup coup = Coup(boules,p,joueur);
-			if(coup.estCorrect(p)==1){
-				p.executeCoup(coup, score_b, score_n);
-				affiche_t(p,tco,tpix);
-				cout<<"score des noirs : "<<score_n<<endl;
+	
+	
+	if(a==1){ //IA VS IA
+	  
+	  cases boules[15];
+	  p.listeboules(joueur,boules);
+	  cout<<"Les noirs commencent"<<endl;
+	  while(score_n!=8&&score_b!=8) { //la défaite à 8 boules
+			Coup coup = Coup(boules,p,joueur); //première génération de coup aléatoire
+			if(coup.estCorrect(p)==1){ //si coup hasard correct
+				p.executeCoup(coup, score_b, score_n); //execute
+				affiche_t(p,tco,tpix); //mise à jour de l'affichage
+				cout<<"score des noirs : "<<score_n<<endl; //nouveaux scores
 				cout<<"score des blancs : "<<score_b<<endl;
-				if(joueur==1){
+				if(joueur==1){ //changement de joueur "actif
 					joueur=2;
 					p.listeboules(joueur,boules);
 					cout<<"Aux blancs de jouer"<<endl;
@@ -68,16 +73,18 @@ int main()
 					}
 			}
 			else{
-			affiche_t(p,tco,tpix);
+			affiche_t(p,tco,tpix); //si pas correct même pas besoin de relancer l'affichage
 			}
+	 }
 	}
-	}
-	if(a==3){
+	
+	
+	if(a==3){ //joueur VS IA
 	cases boules[15];
 	p.listeboules(joueur,boules);
 	cout<<"Les noirs commencent"<<endl;
 	while(score_n!=8&&score_b!=8) {
-				if(joueur==1){
+				if(joueur==1){//le joueur humain commence
 					Coup coup = Coup(tpix,tco,p,joueur) ;
 					if(coup.estCorrect(p)==1){
 						p.executeCoup(coup, score_b, score_n);
@@ -93,7 +100,7 @@ int main()
 					affiche_t(p,tco,tpix);
 					}
 				}
-				else{
+				else{//vient à jouer l'IA
 					Coup coup = Coup(boules,p,joueur);
 					if(coup.estCorrect(p)==1){
 						p.executeCoup(coup, score_b, score_n);
@@ -112,7 +119,7 @@ int main()
 	}
 	}
 
-	if(a==4){
+	if(a==4){ // IA ++
 	cases boules[15];
 	p.listeboules(joueur,boules);
 	cout<<"Les noirs commencent"<<endl;
@@ -142,7 +149,7 @@ int main()
 	}
 	}
 	
-	else{
+	else{// joueur contre joueur
 
 	cout<<"Les noirs commencent"<<endl;
 	while(true||score_n!=8||score_b!=8) {
