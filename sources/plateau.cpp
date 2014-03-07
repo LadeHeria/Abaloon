@@ -139,7 +139,8 @@ int plateau::get(cases c){
  }
 
  int plateau::evalCoup(Coup coup){ //donne le nombre de "points" que rapporte le coup
-	 if(estdedans(coup.sumito.top()+coup.dmove)==0){
+	 
+	 if(!(coup.sumito.empty())&&estdedans(coup.sumito.top()+coup.dmove)==0){
 		return(1);
 	 }
 	 else{

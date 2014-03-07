@@ -25,7 +25,7 @@ int main()
 	//on a trop souvent besoin de passer des pixels aux coordonnées donc j'ai créé deux index pour passer facilement de l'un à l'autre
 	cases tpix[61] ;// ça c'est le tableau i->pixels 
 	cases tco[61] ; //ça c'est i-> coordonnées
-	
+	int nbcoups=0;
 	generer_pix(tpix,48,42,128,30);
 	
 	generer_co(tco);
@@ -59,6 +59,8 @@ int main()
 			Coup coup = Coup(boules,p,joueur); //première génération de coup aléatoire
 			if(coup.estCorrect(p)==1){ //si coup hasard correct
 				p.executeCoup(coup, score_b, score_n); //execute
+				nbcoups=nbcoups+1;
+				cout<<nbcoups<<endl;
 				affiche_t(p,tco,tpix); //mise à jour de l'affichage
 				cout<<"score des noirs : "<<score_n<<endl; //nouveaux scores
 				cout<<"score des blancs : "<<score_b<<endl;
@@ -73,9 +75,6 @@ int main()
 					p.listeboules(joueur,boules);
 					cout<<"Aux noirs de jouer"<<endl;
 					}
-			}
-			else{
-			affiche_t(p,tco,tpix); //si pas correct même pas besoin de relancer l'affichage
 			}
 	 }
 	}
@@ -170,7 +169,7 @@ int main()
 
 				}
 				else{	cout<<"l'IA se lance"<<endl ;
-					Coup coup=IA1(1,boules,p,joueur); cout<<"IA a trouvé son coup"<<endl ;
+					Coup coup=IA1(1,boules,p,joueur); cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
 						cout<<"score des noirs : "<<score_n<<endl;
