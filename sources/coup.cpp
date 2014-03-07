@@ -50,7 +50,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	
 	if (p.get(c)==couleur){ //si cette boule est de la même couleur... 
 		  cases c2 = {-1,-1} ; //stocke une éventuelle boule mal cliquée
-	    while(max(abs(dboules.x),abs(dboules.y))!=1){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
+	    while(max(abs(dboules.x),abs(dboules.y))!=1||(dboules.x*dboules.y==-1)){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
 		if (c2.y!=(-1)) affiche_boule3(c2, tpix, tco,RED) ; //efface la mal cliquée
 		cout<<"un clique adjacent stp"<<endl ;
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
@@ -300,9 +300,15 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 		}
 	}
 	sort(tcoup.begin(), tcoup.end());
-	cout<<"liste triee"<<endl;
+	cout<<"taille tabeau"<<tcoup.size()<<endl;
+	int compteur=0;
+	for(int j=0; j<tcoup.size()&&tcoup[j].valeur==tcoup[tcoup.size()-1].valeur; j++){
+		compteur=j;
+	}
+	cout<<"compteur"<<compteur<<endl;
 	//delete[] tcoup;
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
-	return(tcoup.back().coup);
+	return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
+	//return(tcoup.back().coup);
 }
 
