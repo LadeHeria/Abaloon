@@ -46,7 +46,7 @@ int main()
 	plateau p ;
 	affiche_t(p,tco,tpix);
 	int a;
-	cout<<"tapez 1 pour l'IA, 2 pour le jeu a 2, 3 pour le jeu contre l'IA, 4 pour l'IA amelioree, 5 pour defier l'IA amelioree"<<endl;
+	cout<<"tapez 1 pour l'IA, 2 pour le jeu a 2, 3 pour le jeu contre l'IA, 4 pour l'IA amelioree, 5 pour defier l'IA amelioree, 6 pour l'IA encore + futée"<<endl;
 	cin>>a;
 	
 	
@@ -170,6 +170,42 @@ int main()
 				}
 				else{	cout<<"l'IA se lance"<<endl ;
 					Coup coup=IA1(1,boules,p,joueur); cout<<"IA a trouve son coup"<<endl ;
+						p.executeCoup(coup, score_b, score_n);
+						affiche_t(p,tco,tpix);
+						cout<<"score des noirs : "<<score_n<<endl;
+						cout<<"score des blancs : "<<score_b<<endl;
+					joueur=1;
+					p.listeboules(joueur,boules);
+					cout<<"Aux noirs de jouer"<<endl;
+					
+				}
+			
+	      }
+	
+	
+	}
+	
+	
+	if(a==6){ // joueur VS IA ++++
+	cases boules[15];
+	p.listeboules(joueur,boules);
+	cout<<"Les noirs commencent"<<endl;
+	while(score_n!=8&&score_b!=8) {cout<<"got in"<<endl ;
+				if(joueur==1){//le joueur humain commence
+					Coup coup = Coup(tpix,tco,p,joueur) ;
+					if(coup.estCorrect(p)==1){
+						p.executeCoup(coup, score_b, score_n);
+						affiche_t(p,tco,tpix);
+					cout<<"score des noirs : "<<score_n<<endl;
+					cout<<"score des blancs : "<<score_b<<endl;
+					joueur=2;
+					p.listeboules(joueur,boules);
+					cout<<"Aux blancs de jouer"<<endl;
+					}
+
+				}
+				else{	cout<<"l'IA se lance"<<endl ;
+					Coup coup=IA2(1,boules,p,joueur); cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
 						cout<<"score des noirs : "<<score_n<<endl;

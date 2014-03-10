@@ -120,12 +120,13 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
+				cout<<"ici teest"<<p.get(b_bouges[size-1]+dmove*k)<<" "<<p.get(b_bouges[size-1]+dmove*(k-1))<<" "<<couleur<<" "<<couleurop(couleur)<<endl ;
 				if(p.get(b_bouges[size-1]+dmove*k)==3&&p.get(b_bouges[size-1]+dmove*(k-1))==couleurop(couleur)){
 					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
 				}
 			}
-			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
+			cout<<"est pas correct (je sais plus pourquoi 2)"<<endl ;
 			return(0);
 		}
 		if(dboules==dmove*(-1)){
@@ -312,3 +313,97 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 	//return(tcoup.back().coup);
 }
 
+Coup exetest (Coup coup, cases d){
+  Coup c ;
+  for(int j=0; j<coup.size ; j++){
+	c.b_bouges[j] = coup.b_bouges[j]+ d ;	
+	}
+return c ;
+}
+
+bool aubord (cases c, plateau p) {
+  bool b =1 ; 
+  cases direction[6];
+	direction[0].x=1; direction[0].y=0;
+	direction[1].x=1; direction[1].y=1;
+	direction[2].x=0; direction[2].y=1;
+	direction[3].x=-1; direction[3].y=0;
+	direction[4].x=-1; direction[4].y=-1;
+	direction[5].x=0; direction[5].y=-1;
+  
+  for(int l=0; l<6 ;l++){
+    b = b && p.estdedans(c+direction[l]) ;
+  }
+   return !b ;
+}
+
+int aubords (Coup coup, plateau p){
+  int n =0 ;
+  for(int i=0; i<coup.size; i++){
+    if(aubord(coup.b_bouges[i],p)) n++ ;
+  }
+  return n ;
+}
+
+int valeur (Coup coup, plateau p) {
+  return aubords(exetest(coup,coup.dmove),p)-aubords(coup,p);
+}
+
+int bords(vector <IA> tcoup, int borneinf, int bornesup, plateau p){
+  int score = valeur (tcoup[borneinf].coup,p) ; 
+  int indice = borneinf ;
+  for(int j=0; j<(bornesup-borneinf) ; j++){
+	if (valeur (tcoup[borneinf+j].coup,p)<score) {
+	  score = valeur (tcoup[borneinf+j].coup,p);
+	  indice = borneinf+j;
+	}
+  }
+  return indice ;
+}
+
+
+Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
+	vector <IA> tcoup; 
+	cases direction[6];
+	direction[0].x=1; direction[0].y=0;
+	direction[1].x=1; direction[1].y=1;
+	direction[2].x=0; direction[2].y=1;
+	direction[3].x=-1; direction[3].y=0;
+	direction[4].x=-1; direction[4].y=-1;
+	direction[5].x=0; direction[5].y=-1;
+	int d=0;
+	for(int i=0; i<listeboules[14].x; i++){//parcours de toutes les boules
+		for(int j=0; j<6; j++){// .... de toutes les directions du groupe à déplacer
+			for(int k=1; k<3; k++){//... de toutes les tailles de groupe
+				for(int l=0; l<6&&l!=j+3%6;l++){//toutes les directions de déplacement du groupe sauf colinéaire de sens opposé au vecteur groupe (pk ?)
+					Coup coup=Coup(p, listeboules[i], direction[j], k, direction[l], joueur); // construction du coup en question
+					IA IA11;
+					if(coup.estCorrect(p)==1){
+						IA11.coup=coup;
+						cout<<"coucou"<<endl;
+						if(p.evalCoup(coup)==1){
+							cout<<"coucou1"<<endl;
+							IA11.valeur=IA11.valeur+1;
+						}
+						cout<<"coucou2"<<endl;
+					tcoup.push_back(IA11);
+					
+					}
+					
+				}
+			}
+		}
+	}
+	sort(tcoup.begin(), tcoup.end());
+	cout<<"taille tabeau"<<tcoup.size()<<endl;
+	int compteur=0;
+	for(int j=0; j<tcoup.size()&&tcoup[j].valeur==tcoup[tcoup.size()-1].valeur; j++){
+		compteur=j;
+	}
+	cout<<"compteur"<<compteur<<endl;
+	//delete[] tcoup;
+	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
+	return tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup;
+	//return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
+	//return(tcoup.back().coup);
+}
