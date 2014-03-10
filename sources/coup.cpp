@@ -87,7 +87,9 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
   cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
   cout<<"taille :"<<size<<endl;
   while (p.get(c)==couleurop(couleur)) {
-	  sumito.push(c) ; c = c+dmove ; }//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
+	  sumito.push(c) ; c = c+dmove ; }
+	  cout<<"la couleur est "<<couleur<<endl;//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
+	  
    
 }
 
@@ -97,6 +99,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 	//donc je pense qu'une pile n'est pas la bonne structure, j'ai considéré que c'était un tableau de 3 cases, il faudrait trouver une notation 
 	//pour lorsqu'on ne selectionne que deux elements (pour le troisieme) OU noter dans coup le nombre d'elements sous la forme int size <--MIEUX
 //normalement on peut faire des égalités de cases, multiplication par un scalaire
+ 
 	if(max(abs(dmove.x),abs(dmove.y))!=1){
 		cout<<"est pas correct (dmove trop grand)"<<endl ;
 					return(0);
@@ -120,7 +123,7 @@ bool Coup::estCorrect(plateau p){ //remplir le sumito
 					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				cout<<"ici teest"<<p.get(b_bouges[size-1]+dmove*k)<<" "<<p.get(b_bouges[size-1]+dmove*(k-1))<<" "<<couleur<<" "<<couleurop(couleur)<<endl ;
+				//cout<<"ici teest"<<p.get(b_bouges[size-1]+dmove*k)<<" "<<p.get(b_bouges[size-1]+dmove*(k-1))<<" "<<couleur<<" "<<couleurop(couleur)<<endl ;
 				if(p.get(b_bouges[size-1]+dmove*k)==3&&p.get(b_bouges[size-1]+dmove*(k-1))==couleurop(couleur)){
 					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
@@ -313,7 +316,7 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 	//return(tcoup.back().coup);
 }
 
-Coup exetest (Coup coup, cases d){
+Coup exetest (Coup coup, cases d){ 
   Coup c ;
   for(int j=0; j<coup.size ; j++){
 	c.b_bouges[j] = coup.b_bouges[j]+ d ;	
@@ -346,14 +349,14 @@ int aubords (Coup coup, plateau p){
 }
 
 int valeur (Coup coup, plateau p) {
-  return aubords(exetest(coup,coup.dmove),p)-aubords(coup,p);
+  return -aubords(exetest(coup,coup.dmove),p)+aubords(coup,p);
 }
 
 int bords(vector <IA> tcoup, int borneinf, int bornesup, plateau p){
   int score = valeur (tcoup[borneinf].coup,p) ; 
   int indice = borneinf ;
   for(int j=0; j<(bornesup-borneinf) ; j++){
-	if (valeur (tcoup[borneinf+j].coup,p)<score) {
+	if (valeur (tcoup[borneinf+j].coup,p)>score) {
 	  score = valeur (tcoup[borneinf+j].coup,p);
 	  indice = borneinf+j;
 	}
@@ -403,6 +406,7 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 	cout<<"compteur"<<compteur<<endl;
 	//delete[] tcoup;
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
+	cout<<"valeur "<<valeur(tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup,p)<<endl;
 	return tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup;
 	//return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
 	//return(tcoup.back().coup);

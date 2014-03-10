@@ -193,6 +193,7 @@ int main()
 	while(score_n!=8&&score_b!=8) {cout<<"got in"<<endl ;
 				if(joueur==1){//le joueur humain commence
 					Coup coup = Coup(tpix,tco,p,joueur) ;
+					coup.couleur = 1 ;
 					if(coup.estCorrect(p)==1){
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
@@ -225,7 +226,8 @@ int main()
 
 	cout<<"Les noirs commencent"<<endl;
 	while(true||score_n!=8||score_b!=8) { //WUT ?
-			Coup coup = Coup(tpix,tco,p,joueur) ;
+			Coup coup = Coup(tpix,tco,p,joueur) ; cout<<"la couleur est "<<coup.couleur<<endl;
+			
 			if(coup.estCorrect(p)==1){
 				p.executeCoup(coup, score_b, score_n);
 				affiche_t(p,tco,tpix);
