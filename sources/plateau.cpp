@@ -147,3 +147,28 @@ int plateau::get(cases c){
 	 return(0);
 	 }
  }
+
+  int plateau::evalCoup2(Coup coup){ //donne le nombre de "points" que rapporte le coup
+	 int valeur=0;
+	 if(!(coup.sumito.empty())&&estdedans(coup.sumito.top()+coup.dmove)==0){
+		valeur=valeur+1000; //valeur du coup lorsqu'on pousse dehors
+	 }
+	 //for(int i=0; i<coup.size;i++){
+	//	valeur=valeur+4-abs((coup.b_bouges[i]+coup.dmove).x)+4-abs(5-(coup.b_bouges[i]+coup.dmove).y);//on privilegie des coups qui mettent des boules au centre
+	 //}
+	 plateau q;
+	 int a=14;
+	 int b=14;
+	 for(int j=0; j<61; j++){
+		q.t[j]=t[j];
+	 }
+	 q.executeCoup(coup, a,b);
+	  cases boules[15];
+	  q.listeboules(coup.couleur,boules);
+	  for(int k=0; k<boules[14].x;k++){
+		valeur=valeur+4-abs(boules[k].x)+4-abs(5-boules[k].y);
+	  }
+
+	 return(valeur);
+
+ }

@@ -191,20 +191,16 @@ int main()
 	p.listeboules(joueur,boules);
 	cout<<"Les noirs commencent"<<endl;
 	while(score_n!=8&&score_b!=8) {cout<<"got in"<<endl ;
-				if(joueur==1){//le joueur humain commence
-					Coup coup = Coup(tpix,tco,p,joueur) ;
-					
-					if(coup.estCorrect(p)==1){
+	if(joueur==1){			
+	Coup coup=IA1(1,boules,p,joueur); cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
-					cout<<"score des noirs : "<<score_n<<endl;
-					cout<<"score des blancs : "<<score_b<<endl;
-					joueur=2;
+						cout<<"score des noirs : "<<score_n<<endl;
+						cout<<"score des blancs : "<<score_b<<endl;
+						joueur=2;
 					p.listeboules(joueur,boules);
-					cout<<"Aux blancs de jouer"<<endl;
-					}
-
-				}
+					cout<<"Aux noirs de jouer"<<endl;
+	}
 				else{	cout<<"l'IA se lance"<<endl ;
 					Coup coup=IA2(1,boules,p,joueur); cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);

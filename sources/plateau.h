@@ -23,4 +23,5 @@ public:
 	void listeboules(int joueur, cases boules[15]);
 	bool estdedans(cases c);
 	int evalCoup(Coup coup);
+	int evalCoup2(Coup coup);
 };

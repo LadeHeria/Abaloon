@@ -384,11 +384,7 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 					if(coup.estCorrect(p)==1){
 						IA11.coup=coup;
 						cout<<"coucou"<<endl;
-						if(p.evalCoup(coup)==1){
-							cout<<"coucou1"<<endl;
-							IA11.valeur=IA11.valeur+1;
-						}
-						cout<<"coucou2"<<endl;
+						IA11.valeur=p.evalCoup2(coup);
 					tcoup.push_back(IA11);
 					
 					}
@@ -406,7 +402,7 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 	cout<<"compteur"<<compteur<<endl;
 	//delete[] tcoup;
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
-	cout<<"valeur "<<valeur(tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup,p)<<endl;
+	//cout<<"valeur "<<valeur(tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup,p)<<endl;
 	return tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup;
 	//return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
 	//return(tcoup.back().coup);
