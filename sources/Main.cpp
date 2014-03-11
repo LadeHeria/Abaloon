@@ -193,7 +193,7 @@ int main()
 	while(score_n!=8&&score_b!=8) {cout<<"got in"<<endl ;
 				if(joueur==1){//le joueur humain commence
 					Coup coup = Coup(tpix,tco,p,joueur) ;
-					coup.couleur = 1 ;
+					
 					if(coup.estCorrect(p)==1){
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);

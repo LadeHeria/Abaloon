@@ -23,23 +23,23 @@ int pos(int a);
 struct cases {
   int x ;
   int y ;
-  cases operator +(cases s) {
+  cases operator +(const cases &s) const {
 	  cases c ; c.x = x+s.x ; c.y = y+s.y;
 	  return(c);
   }
-  cases operator -(cases s) {
+  cases operator -(const cases &s) const {
 	  cases c ; c.x = x-s.x ; c.y = y-s.y;
 	  return(c);
   }
-  cases operator*(int i){
+  cases operator*(const int &i) const {
 	  cases c;
 	  c.x=i*x ; c.y=y*i;
 	  return(c);
   }
-  bool operator==(cases s){
+  bool operator==(const cases &s) const {
     return (x==s.x)&&(s.y==y);
   }
-  bool operator!=(cases s){
+  bool operator!=(const cases &s) const{
     return !((x==s.x)&&(s.y==y));
   }
 };
