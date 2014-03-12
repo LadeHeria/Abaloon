@@ -190,6 +190,7 @@ int main()
 						//cout<<"score des blancs : "<<score_b<<endl;
 						joueur=2;
 					p.listeboules(joueur,boules);
+					nbcoups=nbcoups+1;
 					//cout<<"Aux noirs de jouer"<<endl;
 	}
 				else{	//cout<<"l'IA se lance"<<endl ;
@@ -248,6 +249,7 @@ int main()
 	}
 	cout<<"score des noirs : "<<score_n<<endl;
 	cout<<"score des blancs : "<<score_b<<endl;
+	cout<<"nombre de coups joues :"<<nbcoups<<endl;
 	
 
 	

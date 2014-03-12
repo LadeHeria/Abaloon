@@ -160,7 +160,7 @@ int plateau::get(cases c){
 	 plateau q;
 	 int a=14;
 	 int b=14;
-	 for(int j=0; j<61; j++){
+	 for(int j=0; j<61; j++){//preference pour les boules au centre du plateau
 		q.t[j]=t[j];
 	 }
 	 q.executeCoup(coup, a,b);
@@ -168,6 +168,10 @@ int plateau::get(cases c){
 	  q.listeboules(coup.couleur,boules);
 	  for(int k=0; k<boules[14].x;k++){
 		valeur=valeur+4-abs(boules[k].x)+4-abs(5-boules[k].y)+Random(0,9);
+	  
+		if(abs(boules[k].x)==4||abs(5-boules[k].y)==4){
+		valeur=valeur-40;
+		}
 	  }
 
 	 return(valeur);
