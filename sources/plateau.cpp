@@ -169,7 +169,7 @@ int plateau::get(cases c){//rend la couleur (convention habituelle) de la boule 
 	 for(int k=0; k<boules[14].x;k++){//on parcourt toutes les boules
 		valeur=valeur+4-abs(boules[k].x)+4-abs(5-boules[k].y)+Random(0,9);//plus proche du centre => plus de point ; facteur aléatoire pour éviter les attracteurs
 	  
-		if(abs(boules[k].x)==4||abs(5-boules[k].y)==4||((boules[k].x<1)&&(abs(boules[k].x)+boules[k].y))||(boules[k].x=boules[k].y-1)){// pénalité de 40 si boule au bord
+		if(aubord(boules[k])){// pénalité de 40 si boule au bord
 		valeur=valeur-40;
 		}
 	  }

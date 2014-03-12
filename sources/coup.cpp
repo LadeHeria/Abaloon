@@ -339,27 +339,15 @@ Coup exetest (Coup coup, cases d){ //renvoie le coup avec les boules déplacées d
 }
 
 
-bool aubord (cases c, plateau p) {//une boule est-elle au bord ?
-  bool b =1 ; 
-  cases direction[6];
-	direction[0].x=1; direction[0].y=0;
-	direction[1].x=1; direction[1].y=1;
-	direction[2].x=0; direction[2].y=1;
-	direction[3].x=-1; direction[3].y=0;
-	direction[4].x=-1; direction[4].y=-1;
-	direction[5].x=0; direction[5].y=-1;
-  
-  for(int l=0; l<6 ;l++){
-    b = b && p.estdedans(c+direction[l]) ;
-  }
-   return !b ;
+bool aubord (cases c) {//une boule est-elle au bord ?
+  return(abs(c.x)==4||abs(5-c.y)==4||((c.x<1)&&(abs(c.x)+c.y))||(c.x=c.y-1));
 }
 
 
 int aubords (Coup coup, plateau p){// combien de boules au bord parmi les b_bouges ?
   int n =0 ;
   for(int i=0; i<coup.size; i++){
-    if(aubord(coup.b_bouges[i],p)) n++ ;
+    if(aubord(coup.b_bouges[i])) n++ ;
   }
   return n ;
 }

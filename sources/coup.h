@@ -31,6 +31,9 @@ struct IA { //structure qui stock un coup et le nombre de points associés
 
 };
 
+
+bool aubord(cases c);
+
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur);
 Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur);
 /*Coup IA3(int profondeur, cases listeboules[15], plateau p, int joueur);
