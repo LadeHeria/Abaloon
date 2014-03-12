@@ -181,7 +181,9 @@ bool Coup::estCorrect(plateau p) const { //remplir le sumito
 	}
 }
 
+
 Coup::Coup(cases listeboules[15], plateau p, int joueur){ // constructeur de coup aléatoire
+  
   
 	int bouledepart=Random(0,listeboules[14].x);
 	couleur=joueur;
@@ -232,6 +234,7 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){ // constructeur de cou
    //cout<<"Coup aleatoire bien genere"<<endl;
 }
 
+
 Coup::Coup(plateau p, cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
 	couleur=ajoueur;
 	b_bouges[0]=bouledep;
@@ -266,12 +269,20 @@ Coup::Coup(){
 	size=0 ;
 	couleur=1;
 }
+
+
+
 IA::IA(){
+  
+  
+  
 	valeur=0;
 
 }
 
-Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
+
+
+Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){ //IA qui pousse lorsqu'elle peut marquer un point
 	vector <IA> tcoup; 
 	cases direction[6];
 	direction[0].x=1; direction[0].y=0;
@@ -316,15 +327,19 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 	//return(tcoup.back().coup);
 }
 
-Coup exetest (Coup coup, cases d){ 
+
+
+
+Coup exetest (Coup coup, cases d){ //renvoie le coup avec les boules déplacées dans la direction d
   Coup c ;
   for(int j=0; j<coup.size ; j++){
 	c.b_bouges[j] = coup.b_bouges[j]+ d ;	
-	}
-return c ;
+  }
+  return c ;
 }
 
-bool aubord (cases c, plateau p) {
+
+bool aubord (cases c, plateau p) {//une boule est-elle au bord ?
   bool b =1 ; 
   cases direction[6];
 	direction[0].x=1; direction[0].y=0;
@@ -340,7 +355,8 @@ bool aubord (cases c, plateau p) {
    return !b ;
 }
 
-int aubords (Coup coup, plateau p){
+
+int aubords (Coup coup, plateau p){// combien de boules au bord parmi les b_bouges ?
   int n =0 ;
   for(int i=0; i<coup.size; i++){
     if(aubord(coup.b_bouges[i],p)) n++ ;
@@ -348,11 +364,13 @@ int aubords (Coup coup, plateau p){
   return n ;
 }
 
-int valeur (Coup coup, plateau p) {
+
+int valeur (Coup coup, plateau p) { //nombre de boules qui quittent le bord après exécution du coup
   return -aubords(exetest(coup,coup.dmove),p)+aubords(coup,p);
 }
 
-int bords(vector <IA> tcoup, int borneinf, int bornesup, plateau p){
+
+int bords(vector <IA> tcoup, int borneinf, int bornesup, plateau p){ //sélectionne le coup qui éloigne le plus de boules du bord
   int score = valeur (tcoup[borneinf].coup,p) ; 
   int indice = borneinf ;
   for(int j=0; j<(bornesup-borneinf) ; j++){
@@ -365,7 +383,7 @@ int bords(vector <IA> tcoup, int borneinf, int bornesup, plateau p){
 }
 
 
-Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
+Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){//IA ayant pour objectif de prendre le centre
 	vector <IA> tcoup; 
 	cases direction[6];
 	direction[0].x=1; direction[0].y=0;
@@ -402,7 +420,7 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 	return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
 }
 
-/*Coup IA3(int profondeur, cases listeboules[15], plateau p, int joueur){
+/*Coup IA3(int profondeur, cases listeboules[15], plateau p, int joueur){ 
 	vector <IA> tcoup; 
 	cases direction[6];
 	direction[0].x=1; direction[0].y=0;
