@@ -413,7 +413,7 @@ Coup IAborophobe(int profondeur, cases listeboules[15], plateau p, int joueur){ 
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
 	return tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup;
 	
-	return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
+	//return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
 	//return(tcoup.back().coup);
 }
 

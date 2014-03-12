@@ -146,12 +146,12 @@ cases souris(cases tpix[61], cases tco[61]){
 	button=anyGetMouse(s.x,s.y,W1,sw);
 	int d =std::numeric_limits<int>::max() ;// dis(tpix[0],s); 
 
-	
+	cases correction ; correction.x=correction.y=20;
 	////cout<<s.x<<" "<<s.y<<endl ;
 	
 	for (int i=0; i<61;i++) { // je cherche le point le plus proche
-	  if(dis(tpix[i],s)>0&&dis2(tpix[i],s)<d) {
-	    d = dis2(tpix[i],s) ; c = tpix[i] ; ////cout<<c.x<<" "<<c.y<<endl ;
+	  if(dis(tpix[i],s+correction)>0&&dis2(tpix[i],s+correction)<d) {
+	    d = dis2(tpix[i],s+correction) ; c = tpix[i] ; ////cout<<c.x<<" "<<c.y<<endl ;
 	  };		    
 	}
 	////cout<<c.x<<" "<<c.y<<endl ;
