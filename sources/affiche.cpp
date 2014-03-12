@@ -83,7 +83,7 @@ void affiche_boules2(int c, int i, cases t[61]){ //version "automatisée" toujour
   int d=0; int v=0 ;
   for (int a = -4; a<5&&(v==0); a++){
     for(int k=1+pos(a); (k+abs(a)-pos(a)<10)&&(v==0);k++){
-      //cout<<a<<" "<<k<<" "<<j<<endl;
+      ////cout<<a<<" "<<k<<" "<<j<<endl;
       if ((a==c)&&(k==i)){
 	drawCircle(t[d].x,t[d].y,20,BLUE) ; v=1 ; 
       } ;
@@ -101,7 +101,7 @@ void affiche_boule3(cases s, cases tpix[61], cases tco[61],Color co){ //censée r
  
 void affiche_t(plateau p,cases tco[61], cases tpix[61]){
   for(int i=0;i<61;i++){
-    affiche_boule3(tco[i], tpix, tco, couleur(p.get(tco[i]))) ; //cout<<i+1<<" "<<(p.get(tco[i]))<<endl;
+    affiche_boule3(tco[i], tpix, tco, couleur(p.get(tco[i]))) ; ////cout<<i+1<<" "<<(p.get(tco[i]))<<endl;
   }
 }
 

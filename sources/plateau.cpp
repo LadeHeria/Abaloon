@@ -61,13 +61,14 @@ int plateau::get(cases c){
 		}
 	  set(c,0) ;
  	}
- 	else {set(c+d,get(c)) ; set(c,0); cout<<c.x<<" "<<c.y<<" to "<<(c+d).x<<" "<<(c+d).y<<endl;};
+ 	else {set(c+d,get(c)) ; set(c,0); //cout<<c.x<<" "<<c.y<<" to "<<(c+d).x<<" "<<(c+d).y<<endl;
+	};
  }
  
  
  void plateau::executeCoup(Coup coup, int &score_b, int &score_n){
 	 		while((!coup.sumito.empty())){
- 		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop() ; cout<<"sumito"<<endl ;
+ 		deplacement(coup.sumito.top(), coup.dmove, score_b, score_n) ; coup.sumito.pop() ; //cout<<"sumito"<<endl ;
 			}
 	if(coup.dboules==coup.dmove){
 	   for(int i=0; i<coup.size ; i++){
@@ -166,9 +167,10 @@ int plateau::get(cases c){
 	  cases boules[15];
 	  q.listeboules(coup.couleur,boules);
 	  for(int k=0; k<boules[14].x;k++){
-		valeur=valeur+4-abs(boules[k].x)+4-abs(5-boules[k].y);
+		valeur=valeur+4-abs(boules[k].x)+4-abs(5-boules[k].y)+Random(0,9);
 	  }
 
 	 return(valeur);
 
  }
+  

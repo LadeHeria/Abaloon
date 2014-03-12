@@ -32,9 +32,9 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	cases c;
 	
 	while(couleur!=joueur){//ici on attend que l'utilisateur sélectionne une boule: les cases vides, on prend pas
-		cout<<"clique une case occupee margoulin"<<endl ;
+		//cout<<"clique une case occupee margoulin"<<endl ;
 		c = souris(tpix,tco);
-		cout<<c.x<<" "<<c.y<<endl; //première case
+		//cout<<c.x<<" "<<c.y<<endl; //première case
 		b_bouges[0]=c; // got in
 		couleur = p.get(c); //maj de la couleur
 		//je rentre la première boule, je prends la couleur du groupe à déplacer
@@ -52,9 +52,9 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 		  cases c2 = {-1,-1} ; //stocke une éventuelle boule mal cliquée
 	    while(max(abs(dboules.x),abs(dboules.y))!=1||(dboules.x*dboules.y==-1)){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
 		if (c2.y!=(-1)) affiche_boule3(c2, tpix, tco,RED) ; //efface la mal cliquée
-		cout<<"un clique adjacent stp"<<endl ;
+		//cout<<"un clique adjacent stp"<<endl ;
 		dboules = c-b_bouges[0] ;//on donne la direction du groupe
-		cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
+		//cout<<"dboules "<<dboules.x<<" "<<dboules.y<<endl ;
 		affiche_boule3(c, tpix, tco,BLUE) ; //colore la nouvelle boule sélectionnée
 		b_bouges[1]=c ; 
 		size=2;
@@ -65,7 +65,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	
 	if (p.get(c)==couleur){ //si cette boule est aussi de la même couleur... 
 	    while(dboules != (c-b_bouges[1])){//on y rentres au premier coup, puis : tant que t'as cliqué trop loin...
-		cout<<"WUT ?"<<endl ;
+		//cout<<"WUT ?"<<endl ;
 		c = souris(tpix,tco);//nouvel essai
 		b_bouges[2]=c ;  
 		size=2;
@@ -80,15 +80,15 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
 	
 	
 
-  cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
+  //cout<<c.x<<" "<<c.y<<endl ;//case suivante cliquée
   
 	
   dmove = c-b_bouges[size-1]; 
-  cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement cout<<"dmove "<<dmove<<endl;
-  cout<<"taille :"<<size<<endl;
+  //cout<<"("<<c.x<<","<<c.y<<") - "<<"("<<b_bouges[size-1].x<<","<<b_bouges[size-1].y<<") ="<<"dmove "<<dmove.x<<" "<<dmove.y<<endl;//la direction du déplacement //cout<<"dmove "<<dmove<<endl;
+  //cout<<"taille :"<<size<<endl;
   while (p.get(c)==couleurop(couleur)) {
 	  sumito.push(c) ; c = c+dmove ; }
-	  cout<<"la couleur est "<<couleur<<endl;//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
+	  //cout<<"la couleur est "<<couleur<<endl;//tant que de l'autre couleur dans la direction du mouvement, on ajoute (attention foireux quand ça sort du plateau
 	  
    
 }
@@ -101,7 +101,7 @@ bool Coup::estCorrect(plateau p) const { //remplir le sumito
 //normalement on peut faire des égalités de cases, multiplication par un scalaire
  
 	if(max(abs(dmove.x),abs(dmove.y))!=1){
-		cout<<"est pas correct (dmove trop grand)"<<endl ;
+		//cout<<"est pas correct (dmove trop grand)"<<endl ;
 					return(0);
 	}
 	if((dboules==dmove)||(dboules==dmove*(-1))){
@@ -112,24 +112,24 @@ bool Coup::estCorrect(plateau p) const { //remplir le sumito
 			//si on veut autoriser le suicide, c'est ici
 			for(int k=1;k<size+1;k++){
 				if((p.get(b_bouges[size-1]+dmove*((k-1)))==couleur)&&p.estdedans(b_bouges[size-1]+dmove*(k))==0){
-					cout<<"est pas correct (on se suicide pas)"<<endl ;
+					//cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
 				if(p.get(b_bouges[size-1]+dmove*k)==0){
-					cout<<"est correct bon sens";
+					//cout<<"est correct bon sens";
 					return(1); //si case vide, correct
 				}
 				if(couleur==p.get(b_bouges[size-1]+dmove*k)){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
+					//cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
-				cout<<"ici teest"<<p.get(b_bouges[size-1]+dmove*k)<<" "<<p.get(b_bouges[size-1]+dmove*(k-1))<<" "<<couleur<<" "<<couleurop(couleur)<<endl ;
+				//cout<<"ici teest"<<p.get(b_bouges[size-1]+dmove*k)<<" "<<p.get(b_bouges[size-1]+dmove*(k-1))<<" "<<couleur<<" "<<couleurop(couleur)<<endl ;
 				if(p.get(b_bouges[size-1]+dmove*k)==3&&p.get(b_bouges[size-1]+dmove*(k-1))==couleurop(couleur)){
-					cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
+					//cout<<"est  correct (bien joue, vous poussez hors du plateau) bon sens"<<endl ;
 					return(1);
 				}
 			}
-			cout<<"est pas correct (je sais plus pourquoi 2)"<<endl ;
+			//cout<<"est pas correct (je sais plus pourquoi 2)"<<endl ;
 			return(0);
 		}
 		if(dboules==dmove*(-1)){
@@ -137,23 +137,23 @@ bool Coup::estCorrect(plateau p) const { //remplir le sumito
 			//si on veut autoriser le suicide, c'est ici
 			for(int k=1;k<size+1;k++){
 				if((p.get(b_bouges[0]+dmove*((k-1)))==couleur)&&p.estdedans(b_bouges[0]+dmove*(k))==0){
-					cout<<"est pas correct (on se suicide pas)"<<endl ;
+					//cout<<"est pas correct (on se suicide pas)"<<endl ;
 					return(0);
 				}
 				if(p.get(b_bouges[0]+dmove*(k))==0){
-					cout<<"est correct mauvais sens";
+					//cout<<"est correct mauvais sens";
 					return(1); //si case vide, correct              
 				}
 				if(couleur==p.get(b_bouges[0]+dmove*(k))){ //si une boule on a la même couleur que le groupe, pas correct
-					cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
+					//cout<<"est pas correct (boule de meme couleur dans le sumito)"<<endl ;
 					return(0);
 				}
 				if(p.get(b_bouges[0]+dmove*(k))==3&&p.get(b_bouges[0]+dmove*(k-1))==couleurop(couleur)){
-					cout<<"est  correct (bien joue, vous poussez hors du plateau) mauvais sens"<<endl ;
+					//cout<<"est  correct (bien joue, vous poussez hors du plateau) mauvais sens"<<endl ;
 					return(1);
 				}
 			}
-			cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
+			//cout<<"est pas correct (je sais plus pourquoi)"<<endl ;
 			return(0);
 		}
 	}
@@ -167,12 +167,12 @@ bool Coup::estCorrect(plateau p) const { //remplir le sumito
 				a=a;
 			}
 			else{
-				cout<<"est pas correct pousse sur le travers"<<endl;
+				//cout<<"est pas correct pousse sur le travers"<<endl;
 			a=a+1;
 			}
 		}
 		if(a==0){
-		cout<<"est correct, vous poussez en dehors (sur le travers)"<<endl;
+		//cout<<"est correct, vous poussez en dehors (sur le travers)"<<endl;
 		return(1);
 		}
 		else{
@@ -229,7 +229,7 @@ Coup::Coup(cases listeboules[15], plateau p, int joueur){ // constructeur de cou
 		//sumito.push(b_bouges[i]+dmove);
 	   //}
    //}
-   cout<<"Coup aleatoire bien genere"<<endl;
+   //cout<<"Coup aleatoire bien genere"<<endl;
 }
 
 Coup::Coup(plateau p, cases bouledep, cases adboules, int asize, cases admove, int ajoueur){
@@ -289,12 +289,12 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 					IA IA11;
 					if(coup.estCorrect(p)==1){
 						IA11.coup=coup;
-						cout<<"coucou"<<endl;
+						//cout<<"coucou"<<endl;
 						if(p.evalCoup(coup)==1){
-							cout<<"coucou1"<<endl;
+							//cout<<"coucou1"<<endl;
 							IA11.valeur=IA11.valeur+1;
 						}
-						cout<<"coucou2"<<endl;
+						//cout<<"coucou2"<<endl;
 					tcoup.push_back(IA11);
 					
 					}
@@ -304,12 +304,12 @@ Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur){
 		}
 	}
 	sort(tcoup.begin(), tcoup.end());
-	cout<<"taille tabeau"<<tcoup.size()<<endl;
+	//cout<<"taille tabeau"<<tcoup.size()<<endl;
 	int compteur=0;
 	for(int j=0; j<tcoup.size()&&tcoup[j].valeur==tcoup[tcoup.size()-1].valeur; j++){
 		compteur=j;
 	}
-	cout<<"compteur"<<compteur<<endl;
+	//cout<<"compteur"<<compteur<<endl;
 	//delete[] tcoup;
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
 	return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
@@ -383,7 +383,7 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 					IA IA11;
 					if(coup.estCorrect(p)==1){
 						IA11.coup=coup;
-						cout<<"coucou"<<endl;
+						//cout<<"coucou"<<endl;
 						IA11.valeur=p.evalCoup2(coup);
 					tcoup.push_back(IA11);
 					
@@ -394,15 +394,15 @@ Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur){
 		}
 	}
 	sort(tcoup.begin(), tcoup.end());
-	cout<<"taille tabeau"<<tcoup.size()<<endl;
+	//cout<<"taille tabeau"<<tcoup.size()<<endl;
 	int compteur=0;
 	for(int j=0; j<tcoup.size()&&tcoup[j].valeur==tcoup[tcoup.size()-1].valeur; j++){
 		compteur=j;
 	}
-	cout<<"compteur"<<compteur<<endl;
+	//cout<<"compteur"<<compteur<<endl;
 	//delete[] tcoup;
 	//Coup coup=Coup(p, listeboules[0], direction[0], 1, direction[0], 1);
-	//cout<<"valeur "<<valeur(tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup,p)<<endl;
+	////cout<<"valeur "<<valeur(tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup,p)<<endl;
 	return tcoup[bords(tcoup, tcoup.size()-compteur-1, tcoup.size(), p)].coup;
 	//return(tcoup[Random(tcoup.size()-compteur-1,tcoup.size())].coup);
 	//return(tcoup.back().coup);

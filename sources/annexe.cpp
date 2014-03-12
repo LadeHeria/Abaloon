@@ -147,16 +147,16 @@ cases souris(cases tpix[61], cases tco[61]){
 	int d =std::numeric_limits<int>::max() ;// dis(tpix[0],s); 
 
 	
-	//cout<<s.x<<" "<<s.y<<endl ;
+	////cout<<s.x<<" "<<s.y<<endl ;
 	
 	for (int i=0; i<61;i++) { // je cherche le point le plus proche
 	  if(dis(tpix[i],s)>0&&dis2(tpix[i],s)<d) {
-	    d = dis2(tpix[i],s) ; c = tpix[i] ; //cout<<c.x<<" "<<c.y<<endl ;
+	    d = dis2(tpix[i],s) ; c = tpix[i] ; ////cout<<c.x<<" "<<c.y<<endl ;
 	  };		    
 	}
-	//cout<<c.x<<" "<<c.y<<endl ;
+	////cout<<c.x<<" "<<c.y<<endl ;
 	c = pixtoco(c, tpix, tco) ; // j'avais le point en pixels, je le sors en coordonnées
-	//cout<<c.x<<" "<<c.y<<endl ;
+	////cout<<c.x<<" "<<c.y<<endl ;
 	return c ;
 }
 
