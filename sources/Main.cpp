@@ -243,10 +243,16 @@ int main()
 				    affiche_t(p,tco,tpix);
 			  }
 	      }
-
+	
+	
+	
 	}
 	
-	affiche_t(p,tco,tpix);
+	cout<<"score des noirs : "<<score_n<<endl;
+	cout<<"score des blancs : "<<score_b<<endl;
+	cout<<"nombre de coups joues :"<<nbcoups<<endl;
+	
+	
 	
 	
 	
@@ -256,9 +262,6 @@ int main()
 	//cout<<"done"<<endl;
 	  
 	
-	cout<<"score des noirs : "<<score_n<<endl;
-	cout<<"score des blancs : "<<score_b<<endl;
-	cout<<"nombre de coups joues :"<<nbcoups<<endl;
 	
 
 	
