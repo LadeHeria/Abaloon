@@ -36,6 +36,7 @@ bool aubord(cases c);
 
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur);
 Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur);
+Coup IAborophobe(int profondeur, cases listeboules[15], plateau p, int joueur);
 /*Coup IA3(int profondeur, cases listeboules[15], plateau p, int joueur);
 int Minf(int profondeur,IA IA33);
 int Maxf(int profondeur, IA IA33);

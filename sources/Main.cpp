@@ -43,8 +43,9 @@ int main()
 	cout<<"1 pour l'IA aléatoire contre elle-même"<< endl ;
 	cout<<"2 pour le jeu a 2"<<endl;
 	cout<<"3 pour le jeu contre l'IA aléatoire, 4 pour l'IA1 contre elle même"<<endl ; 
-	cout<<"5 pour defier l'IA1"<<endl ;
-	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 straège"<<endl;
+	cout<<"5 pour defier l'IAborophobe"<<endl ;
+	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 contre-straège"<<endl;
+	cout<<"7 pour l'IA qui fuie les bords contre l'IA2 centre-straège"<<endl;
 	cin>>a;
 	
 	if(a==1){ //IA VS IA
@@ -168,7 +169,7 @@ int main()
 
 				}
 				else{	//cout<<"l'IA se lance"<<endl ;
-					Coup coup=IA1(1,boules,p,joueur); //cout<<"IA a trouve son coup"<<endl ;
+					Coup coup=IAborophobe(1,boules,p,joueur); //cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
 						//cout<<"score des noirs : "<<score_n<<endl;
@@ -192,6 +193,40 @@ int main()
 		  while(score_n!=8&&score_b!=8) {//cout<<"got in"<<endl ;
 				if(joueur==1){			
 						  Coup coup=IA1(1,boules,p,joueur); //cout<<"IA a trouve son coup"<<endl ;
+						p.executeCoup(coup, score_b, score_n);
+						affiche_t(p,tco,tpix);
+						//cout<<"score des noirs : "<<score_n<<endl;
+						//cout<<"score des blancs : "<<score_b<<endl;
+						joueur=2;
+						p.listeboules(joueur,boules);
+						nbcoups=nbcoups+1;
+						  //cout<<"Aux noirs de jouer"<<endl;
+				}
+				else{	//cout<<"l'IA se lance"<<endl ;
+					Coup coup=IA2(1,boules,p,joueur); //cout<<"IA a trouve son coup"<<endl ;
+						p.executeCoup(coup, score_b, score_n);
+						affiche_t(p,tco,tpix);
+						//cout<<"score des noirs : "<<score_n<<endl;
+						//cout<<"score des blancs : "<<score_b<<endl;
+					joueur=1;
+					p.listeboules(joueur,boules);
+					//cout<<"Aux noirs de jouer"<<endl;
+					
+				}
+			
+		  }
+	
+	
+	}
+	
+	
+	if(a==7){ // IAborophobe VS IA ++++
+		  cases boules[15];
+		  p.listeboules(joueur,boules);
+		  //cout<<"Les noirs commencent"<<endl;
+		  while(score_n!=8&&score_b!=8) {//cout<<"got in"<<endl ;
+				if(joueur==1){			
+						  Coup coup=IAborophobe(1,boules,p,joueur); //cout<<"IA a trouve son coup"<<endl ;
 						p.executeCoup(coup, score_b, score_n);
 						affiche_t(p,tco,tpix);
 						//cout<<"score des noirs : "<<score_n<<endl;
