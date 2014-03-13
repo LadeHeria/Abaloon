@@ -2,6 +2,9 @@
 #include "plateau.h"
 
 using namespace std ;
+
+
+
 plateau::plateau(){//constructeur de plateau
 	generer_co(tco);
 	boules_b=14;

@@ -137,7 +137,7 @@ cases cotopix(cases s, cases tpix[61], cases tco[61]) {
     
 
 
-cases souris(cases tpix[61], cases tco[61]){
+cases souris(cases tpix[61], cases tco[61]){//obtenir la case où l'on clique
 	int button;
 	cases s ; int sw; Window W1 ;
 	cases c ;

@@ -8,15 +8,11 @@ using namespace std ;
 
 
 
-void affiche_plateau() ;
 
-void affiche_boules(int c, int i, cases tableau[60]);
 
-void affiche_boules2(int c, int i, cases t[60]);
+void affiche_boule3(cases s, cases tpix[61], cases tco[61], Color co); //affichage d'une boule de couleur "co" en lieu "s"
 
-void affiche_boule3(cases s, cases tpix[61], cases tco[61], Color co);
-
-void affiche_t(plateau p,cases tco[61], cases tpix[61]);
+void affiche_t(plateau p,cases tco[61], cases tpix[61]);//affichage du plateau
 
 
 //cette fonction génère un tableau de points comportant la position des sommets haut-gauche des boules)
@@ -27,6 +23,5 @@ void affiche_t(plateau p,cases tco[61], cases tpix[61]);
 //Décalage en bas (449 ;288) soit 168
 
 
-//a priori, il n'est pas nécessaire de faire un pointeur pour un tableau de 61 cases
 
 
