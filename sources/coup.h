@@ -37,10 +37,6 @@ bool aubord(cases c);//une case se trouve-t-elle au bord ?
 Coup IA1(int profondeur, cases listeboules[15], plateau p, int joueur);//IA qui pousse l'adversaire en dehors du terrain lorsqu'elle le peut
 Coup IA2(int profondeur, cases listeboules[15], plateau p, int joueur);//IA qui en plus de pousser, éprouve une prégérence pour le centre
 Coup IAborophobe(int profondeur, cases listeboules[15], plateau p, int joueur);//IA censée fuir les bords (pas au point)
-/*Coup IA3(int profondeur, cases listeboules[15], plateau p, int joueur);
-int Minf(int profondeur,IA IA33);
-int Maxf(int profondeur, IA IA33);
-*/
 
 
 

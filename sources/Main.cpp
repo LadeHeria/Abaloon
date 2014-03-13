@@ -40,12 +40,12 @@ int main()
 	affiche_t(p,tco,tpix);
 	int a;
 	cout<<"tapez "<<endl ;
-	cout<<"1 pour l'IA aléatoire contre elle-même"<< endl ;
+	cout<<"1 pour l'IA aleatoire contre elle-même"<< endl ;
 	cout<<"2 pour le jeu a 2"<<endl;
-	cout<<"3 pour le jeu contre l'IA aléatoire, 4 pour l'IA1 contre elle même"<<endl ; 
+	cout<<"3 pour le jeu contre l'IA aléatoire, 4 pour l'IA1 contre elle meme"<<endl ; 
 	cout<<"5 pour defier l'IAborophobe"<<endl ;
-	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 contre-straège"<<endl;
-	cout<<"7 pour l'IA qui fuie les bords contre l'IA2 centre-straège"<<endl;
+	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 contre-straege"<<endl;
+	cout<<"7 pour l'IA qui fuie les bords contre l'IA2 centre-straege"<<endl;
 	cin>>a;
 	
 	if(a==1){ //IA VS IA
