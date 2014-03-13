@@ -22,6 +22,3 @@ void affiche_t(plateau p,cases tco[61], cases tpix[61]);//affichage du plateau
 //Décalage à droite +193
 //Décalage en bas (449 ;288) soit 168
 
-
-
-

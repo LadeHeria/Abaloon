@@ -61,6 +61,6 @@ int max (int i, int j);
 
 void InitRandom();
 
-int Random(int a, int b);
+int Random(int a, int b); //genere un entier entre a et b
 
 int couleurop(int a);

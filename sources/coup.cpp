@@ -93,7 +93,7 @@ Coup::Coup(cases tpix[61],cases tco[61], plateau p, int joueur) { //règle : dire
    
 }
 
-
+/////////////////////////ATTENTION MAL DE CRANE EN APPROCHE///////////////////////////////////////
 bool Coup::estCorrect(plateau p) const { //remplir le sumito
 	//je suis obligé de dépiler plusieurs fois dans la fonction pour tester les cases si on n'avance pas dans la direction du groupe,
 	//donc je pense qu'une pile n'est pas la bonne structure, j'ai considéré que c'était un tableau de 3 cases, il faudrait trouver une notation 
