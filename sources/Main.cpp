@@ -44,7 +44,7 @@ int main()
 	cout<<"2 pour le jeu a 2"<<endl;
 	cout<<"3 pour le jeu contre l'IA aléatoire, 4 pour l'IA1 contre elle meme"<<endl ; 
 	cout<<"5 pour defier l'IAborophobe"<<endl ;
-	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 contre-straege"<<endl;
+	cout<<"6 pour l'IA1 (qui pousse une boule quand elle peut) contre l'IA2 centre-stratege"<<endl;
 	cout<<"7 pour l'IA qui fuie les bords contre l'IA2 centre-straege"<<endl;
 	cin>>a;
 	

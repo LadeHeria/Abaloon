@@ -44,7 +44,13 @@ struct cases {
   }
 };
 
-void generer_pix(cases tableau[61], int decalage_x, int decalage_y, int debutx, int debut_y); // j'ai juste renommé ta fonction
+void generer_pix(cases tableau[61], int decalage_x, int decalage_y, int debutx, int debut_y); // //cette fonction génère un tableau de points comportant la position des sommets haut-gauche des boules)
+//Pour une image de largeur 2000*1736.
+//Premier carré : 513 ;120 
+//largeur carré : 143
+//Décalage à droite +193
+//Décalage en bas (449 ;288) soit 168
+
 
 
 void generer_co(cases t[61]); // la fonction qui rempli tco
